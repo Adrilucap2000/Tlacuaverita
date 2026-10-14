@@ -1,1670 +1,440 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#260b31">
-  <title>Tlacuaverita Literaria | Salud Digital UNAM</title>
-
-  <style>
-    :root {
-      --fondo: #260b31;
-      --tarjeta: #3d174b;
-      --morado: #7918d0;
-      --morado-claro: #d8a4ff;
-      --naranja: #ff7900;
-      --amarillo: #ffd36a;
-      --blanco: #ffffff;
-      --texto: #eadcf3;
-      --footer: #262626;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: var(--fondo);
-      color: var(--blanco);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-    }
-
-    button,
-    input,
-    textarea {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    /* ENCABEZADO INSTITUCIONAL */
-
-    .institutional-header {
-      width: 100%;
-      background: #103e68;
-      line-height: 0;
-    }
-
-    .institutional-header img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-
-    .hero {
-      text-align: center;
-      padding: 25px 16px 68px;
-      background: radial-gradient(
-        ellipse at center,
-        #42134e 0%,
-        #30103b 65%,
-        #220729 100%
-      );
-      border-bottom: 3px solid var(--naranja);
-    }
-
-    .papel-picado {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin: 0 auto 12px;
-    }
-
-    .papel-picado span {
-      width: 34px;
-      height: 21px;
-      background: var(--morado);
-      border: 2px dashed white;
-      clip-path: polygon(
-        0 0,
-        100% 0,
-        100% 75%,
-        80% 100%,
-        60% 75%,
-        40% 100%,
-        20% 75%,
-        0 100%
-      );
-    }
-
-    .papel-picado span:nth-child(3n + 2) {
-      background: var(--naranja);
-    }
-
-    .papel-picado span:nth-child(3n) {
-      background: #a43b72;
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      line-height: 1.2;
-      font-weight: 800;
-    }
-
-    .hero p {
-      margin: 12px 0 0;
-      color: var(--texto);
-    }
-
-    .hero .institution-name {
-      margin-top: 2px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 46px;
-      padding: 10px 20px;
-      border: 2px solid transparent;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: transform .2s, filter .2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.08);
-    }
-
-    .btn-primary {
-      background: var(--morado);
-      border-color: var(--morado-claro);
-      color: white;
-    }
-
-    .btn-orange {
-      background: var(--naranja);
-      border-color: var(--naranja);
-      color: #220729;
-    }
-
-
-    main {
-      width: min(1180px, 94%);
-      margin: 28px auto 44px;
-    }
-
-    .section-card {
-      margin-bottom: 26px;
-      padding: 24px;
-      background: var(--tarjeta);
-      border: 1px solid #79428a;
-      border-radius: 16px;
-    }
-
-    .section-card h2 {
-      margin: 0 0 14px;
-      color: var(--amarillo);
-      font-size: clamp(1.35rem, 2.5vw, 1.65rem);
-      line-height: 1.35;
-    }
-
-    .section-intro {
-      margin: 0 0 20px;
-      color: var(--texto);
-      font-size: .95rem;
-    }
-
-
-    .chart-container {
-      position: relative;
-      width: 100%;
-      max-width: 410px;
-      margin: 8px auto 0;
-    }
-
-    .pie-chart {
-      display: block;
-      width: 100%;
-      height: auto;
-      overflow: visible;
-    }
-
-    .pie-slice {
-      cursor: pointer;
-      stroke: #f9e9ff;
-      stroke-width: 2;
-      transform-box: fill-box;
-      transform-origin: center;
-      transition:
-        filter 180ms ease,
-        opacity 180ms ease,
-        stroke-width 180ms ease;
-    }
-
-    .pie-slice:hover,
-    .pie-slice:focus-visible,
-    .pie-slice.selected {
-      filter: brightness(1.45) drop-shadow(0 0 7px #ffd36a);
-      stroke: #ffffff;
-      stroke-width: 4;
-      outline: none;
-    }
-
-    .empty-chart-circle {
-      fill: none;
-      stroke: #8a6096;
-      stroke-width: 2;
-      stroke-dasharray: 5 7;
-    }
-
-    .chart-hole {
-      fill: var(--tarjeta);
-      stroke: #f8d6ff;
-      stroke-width: 3;
-    }
-
-    .chart-note {
-      max-width: 540px;
-      margin: 14px auto 0;
-      color: var(--texto);
-      font-size: .9rem;
-      text-align: center;
-    }
-
-
-    .works-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .work-card {
-      min-width: 0;
-      padding: 16px;
-      background: #2c1038;
-      border: 1px solid #754487;
-      border-radius: 12px;
-    }
-
-    .work-card h3 {
-      margin: 0 0 8px;
-      color: var(--amarillo);
-      font-size: 1.05rem;
-      overflow-wrap: anywhere;
-    }
-
-    .work-card p {
-      color: var(--texto);
-      font-size: .9rem;
-    }
-
-    .work-card img {
-      display: block;
-      width: 100%;
-      max-height: 300px;
-      margin-top: 12px;
-      object-fit: contain;
-      border-radius: 8px;
-      background: white;
-    }
-
-    .work-card button {
-      margin-top: 12px;
-    }
-
-    .empty-state {
-      grid-column: 1 / -1;
-      padding: 28px 16px;
-      color: var(--texto);
-      text-align: center;
-      border: 1px solid #754487;
-      border-radius: 10px;
-      background: #32133d;
-    }
-
-    .empty-state p {
-      margin: 0;
-    }
-
-
-    .rules-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px 18px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .rules-list li {
-      padding: 14px 16px;
-      color: var(--texto);
-      background: #32133d;
-      border: 1px solid #593168;
-      border-left: 3px solid var(--naranja);
-      border-radius: 4px 9px 9px 4px;
-    }
-
-    .rules-list li strong {
-      display: block;
-      margin-bottom: 4px;
-      color: #ffffff;
-      font-weight: 700;
-    }
-
-    .closing-message {
-      margin: 24px 0 0;
-      color: var(--amarillo);
-      text-align: center;
-      font-weight: 700;
-      font-size: 1.05rem;
-    }
-
-    /* PIE INSTITUCIONAL */
-
-    .site-footer {
-      padding: 38px 5% 18px;
-      background: var(--footer);
-      color: #eeeeee;
-      border-top: 4px solid var(--naranja);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 38px;
-      width: min(1180px, 100%);
-      margin: 0 auto;
-    }
-
-    .site-footer h2 {
-      margin: 0 0 16px;
-      color: white;
-      font-size: 1.3rem;
-    }
-
-    .site-footer h3 {
-      margin: 18px 0 6px;
-      color: white;
-      font-size: 1rem;
-    }
-
-    .site-footer p {
-      margin: 6px 0;
-      color: #dddddd;
-      font-size: .92rem;
-    }
-
-    .map-container {
-      width: 100%;
-      height: 230px;
-      margin-top: 18px;
-      overflow: hidden;
-      border: 1px solid #555555;
-      border-radius: 8px;
-    }
-
-    .map-container iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .footer-social {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 22px 0;
-    }
-
-    .social-link {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      width: 40px;
-      height: 40px;
-      border: 1px solid #777777;
-      border-radius: 50%;
-      background: #363636;
-      color: white;
-      text-decoration: none;
-      font-size: .8rem;
-      font-weight: 700;
-      transition: background .2s, transform .2s;
-    }
-
-    .social-link:hover {
-      background: var(--morado);
-      transform: translateY(-2px);
-    }
-
-    .footer-logos {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 18px;
-      margin-top: 18px;
-    }
-
-    .footer-logos img {
-      display: block;
-      max-width: 100%;
-      max-height: 65px;
-      object-fit: contain;
-    }
-
-    .footer-legal {
-      width: min(1180px, 100%);
-      margin: 28px auto 0;
-      padding-top: 16px;
-      border-top: 1px solid #555555;
-      color: #cccccc;
-      font-size: .78rem;
-      text-align: center;
-    }
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      padding: 18px;
-      background: rgb(0 0 0 / 78%);
-    }
-
-    .modal.open {
-      display: flex;
-    }
-
-    .modal-content {
-      position: relative;
-      width: min(560px, 100%);
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 26px;
-      background: #351342;
-      border: 1px solid #9253a5;
-      border-radius: 14px;
-      box-shadow: 0 15px 45px rgb(0 0 0 / 35%);
-    }
-
-    .modal-content h2 {
-      margin: 0 35px 10px 0;
-      color: var(--amarillo);
-    }
-
-    .modal-content p {
-      color: var(--texto);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 10px;
-      right: 14px;
-      width: 36px;
-      height: 36px;
-      border: 0;
-      border-radius: 50%;
-      background: transparent;
-      color: white;
-      font-size: 1.7rem;
-    }
-
-    .modal-close:hover {
-      background: #542462;
-    }
-
-    .form-group {
-      margin: 14px 0;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 6px;
-      color: white;
-      font-weight: 700;
-    }
-
-    .form-group input:not([type="file"]),
-    .form-group textarea {
-      display: block;
-      width: 100%;
-      padding: 11px 12px;
-      color: #211029;
-      background: white;
-      border: 1px solid #cccccc;
-      border-radius: 8px;
-    }
-
-    .form-group textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    .form-group input[type="file"] {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      color: white;
-      background: #2c1038;
-      border: 1px dashed #b68ac9;
-      border-radius: 8px;
-    }
-
-    .upload-help,
-    .form-note {
-      color: var(--texto);
-      font-size: .84rem;
-    }
-
-    .preview-container {
-      display: none;
-      margin: 14px 0;
-      padding: 12px;
-      background: #2c1038;
-      border: 1px solid #754487;
-      border-radius: 10px;
-    }
-
-    .preview-container.visible {
-      display: block;
-    }
-
-    .preview-container img {
-      display: block;
-      max-width: 100%;
-      max-height: 300px;
-      margin: 0 auto;
-      object-fit: contain;
-      border-radius: 6px;
-      background: white;
-    }
-
-    .preview-caption {
-      margin: 8px 0 0;
-      text-align: center;
-      overflow-wrap: anywhere;
-      font-size: .82rem;
-    }
-
-    .form-message {
-      margin-top: 12px;
-      padding: 10px;
-      border-radius: 8px;
-      color: white;
-      background: #51225e;
-      font-size: .9rem;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .work-detail-image {
-      display: block;
-      width: 100%;
-      max-height: 60vh;
-      margin: 18px auto;
-      object-fit: contain;
-      border-radius: 10px;
-      background: #ffffff;
-    }
-
-    .work-detail-author {
-      margin: 8px 0;
-      color: var(--texto);
-    }
-
-    .work-detail-description {
-      padding: 12px;
-      background: #2c1038;
-      border-radius: 8px;
-      overflow-wrap: anywhere;
-    }
-
-
-    @media (max-width: 850px) {
-      .works-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .hero {
-        padding: 22px 14px 54px;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      .papel-picado {
-        gap: 4px;
-      }
-
-      .papel-picado span {
-        width: 27px;
-        height: 18px;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-      }
-
-      .hero-buttons .btn {
-        width: min(260px, 100%);
-      }
-
-      main {
-        width: 92%;
-        margin-top: 20px;
-      }
-
-      .section-card {
-        padding: 18px 15px;
-      }
-
-      .works-grid,
-      .rules-list {
-        grid-template-columns: 1fr;
-      }
-
-      .site-footer {
-        padding: 30px 5% 16px;
-      }
-
-      .modal-content {
-        padding: 22px 18px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#260b31">
+<title>Tlacuaverita Literaria | Salud Digital UNAM</title>
+<style>
+:root{--fondo:#260b31;--tarjeta:#3d174b;--morado:#7918d0;--morado-claro:#d8a4ff;--naranja:#ff7900;--amarillo:#ffd36a;--blanco:#fff;--texto:#eadcf3;--footer:#262626}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--fondo);color:var(--blanco);font-family:Arial,Helvetica,sans-serif;line-height:1.6}button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
+.institutional-header{width:100%;background:#103e68;line-height:0}.institutional-header img{display:block;width:100%;height:auto}
+.hero{text-align:center;padding:25px 16px 68px;background:radial-gradient(ellipse at center,#42134e 0%,#30103b 65%,#220729 100%);border-bottom:3px solid var(--naranja)}
+.papel-picado{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin:0 auto 12px}.papel-picado span{width:34px;height:21px;background:var(--morado);border:2px dashed white;clip-path:polygon(0 0,100% 0,100% 75%,80% 100%,60% 75%,40% 100%,20% 75%,0 100%)}.papel-picado span:nth-child(3n + 2){background:var(--naranja)}.papel-picado span:nth-child(3n){background:#a43b72}
+.hero h1{margin:0;font-size:clamp(2rem,4vw,2.8rem);line-height:1.2;font-weight:800}.hero p{margin:12px 0 0;color:var(--texto)}.hero .institution-name{margin-top:2px}
+.hero-buttons{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px;margin-top:20px}
+.btn{display:inline-flex;justify-content:center;align-items:center;min-height:46px;padding:10px 20px;border:2px solid transparent;border-radius:10px;text-decoration:none;font-weight:700;transition:transform .2s,filter .2s}.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}.btn-primary{background:var(--morado);border-color:var(--morado-claro);color:white}.btn-orange{background:var(--naranja);border-color:var(--naranja);color:#220729}
+main{width:min(1180px,94%);margin:28px auto 44px}.section-card{margin-bottom:26px;padding:24px;background:var(--tarjeta);border:1px solid #79428a;border-radius:16px}.section-card h2{margin:0 0 14px;color:var(--amarillo);font-size:clamp(1.35rem,2.5vw,1.65rem);line-height:1.35}.section-intro{margin:0 0 20px;color:var(--texto);font-size:.95rem}
+.chart-container{position:relative;width:100%;max-width:410px;margin:8px auto 0}.pie-chart{display:block;width:100%;height:auto;overflow:visible}.pie-slice{cursor:pointer;stroke:#f9e9ff;stroke-width:2;transition:filter 180ms ease,opacity 180ms ease,stroke-width 180ms ease}.pie-slice:hover,.pie-slice:focus-visible,.pie-slice.selected{filter:brightness(1.45) drop-shadow(0 0 7px #ffd36a);stroke:#fff;stroke-width:4;outline:none}.empty-chart-circle{fill:none;stroke:#8a6096;stroke-width:2;stroke-dasharray:5 7}.chart-hole{fill:var(--tarjeta);stroke:#f8d6ff;stroke-width:3}.chart-note{max-width:540px;margin:14px auto 0;color:var(--texto);font-size:.9rem;text-align:center}
+.works-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.work-card{min-width:0;padding:16px;background:#2c1038;border:1px solid #754487;border-radius:12px}.work-card h3{margin:0 0 8px;color:var(--amarillo);font-size:1.05rem;overflow-wrap:anywhere}.work-card p{color:var(--texto);font-size:.9rem}.work-card img{display:block;width:100%;max-height:300px;margin-top:12px;object-fit:contain;border-radius:8px;background:white}.work-card button{margin-top:12px}.empty-state{grid-column:1/-1;padding:28px 16px;color:var(--texto);text-align:center;border:1px solid #754487;border-radius:10px;background:#32133d}.empty-state p{margin:0}
+.rules-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 18px;margin:0;padding:0;list-style:none}.rules-list li{padding:14px 16px;color:var(--texto);background:#32133d;border:1px solid #593168;border-left:3px solid var(--naranja);border-radius:4px 9px 9px 4px}.rules-list li strong{display:block;margin-bottom:4px;color:#fff}.closing-message{margin:24px 0 0;color:var(--amarillo);text-align:center;font-weight:700;font-size:1.05rem}
+.site-footer{padding:38px 5% 18px;background:var(--footer);color:#eee;border-top:4px solid var(--naranja)}.footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:38px;width:min(1180px,100%);margin:0 auto}.site-footer h2{margin:0 0 16px;color:white;font-size:1.3rem}.site-footer h3{margin:18px 0 6px;color:white;font-size:1rem}.site-footer p{margin:6px 0;color:#ddd;font-size:.92rem}.map-container{width:100%;height:230px;margin-top:18px;overflow:hidden;border:1px solid #555;border-radius:8px}.map-container iframe{width:100%;height:100%;border:0}.footer-social{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}.social-link{display:inline-flex;justify-content:center;align-items:center;width:40px;height:40px;border:1px solid #777;border-radius:50%;background:#363636;color:white;text-decoration:none;font-size:.8rem;font-weight:700;transition:background .2s,transform .2s}.social-link:hover{background:var(--morado);transform:translateY(-2px)}.footer-logos{display:flex;align-items:center;flex-wrap:wrap;gap:18px;margin-top:18px}.footer-logos img{display:block;max-width:100%;max-height:65px;object-fit:contain}.footer-legal{width:min(1180px,100%);margin:28px auto 0;padding-top:16px;border-top:1px solid #555;color:#ccc;font-size:.78rem;text-align:center}
+.modal{position:fixed;inset:0;z-index:1000;display:none;justify-content:center;align-items:center;padding:18px;background:rgb(0 0 0 / 78%)}.modal.open{display:flex}.modal-content{position:relative;width:min(560px,100%);max-height:90vh;overflow-y:auto;padding:26px;background:#351342;border:1px solid #9253a5;border-radius:14px;box-shadow:0 15px 45px rgb(0 0 0 / 35%)}.modal-content h2{margin:0 35px 10px 0;color:var(--amarillo)}.modal-content p{color:var(--texto)}.modal-close{position:absolute;top:10px;right:14px;width:36px;height:36px;border:0;border-radius:50%;background:transparent;color:white;font-size:1.7rem}.modal-close:hover{background:#542462}
+.form-group{margin:14px 0}.form-group label{display:block;margin-bottom:6px;color:white;font-weight:700}.form-group input:not([type=file]),.form-group textarea{display:block;width:100%;padding:11px 12px;color:#211029;background:white;border:1px solid #ccc;border-radius:8px}.form-group textarea{min-height:100px;resize:vertical}.form-group input[type=file]{display:block;width:100%;padding:12px;color:white;background:#2c1038;border:1px dashed #b68ac9;border-radius:8px}.upload-help,.form-note{color:var(--texto);font-size:.84rem}.preview-container{display:none;margin:14px 0;padding:12px;background:#2c1038;border:1px solid #754487;border-radius:10px}.preview-container.visible{display:block}.preview-container img{display:block;max-width:100%;max-height:300px;margin:0 auto;object-fit:contain;border-radius:6px;background:white}.preview-caption{margin:8px 0 0;text-align:center;overflow-wrap:anywhere;font-size:.82rem}.form-message{margin-top:12px;padding:10px;border-radius:8px;color:white;background:#51225e;font-size:.9rem}.hidden{display:none!important}.work-detail-image{display:block;width:100%;max-height:60vh;margin:18px auto;object-fit:contain;border-radius:10px;background:#fff}.work-detail-author{margin:8px 0;color:var(--texto)}.work-detail-description{padding:12px;background:#2c1038;border-radius:8px;overflow-wrap:anywhere}
+@media(max-width:850px){.works-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.footer-grid{grid-template-columns:1fr;gap:28px}}
+@media(max-width:600px){.hero{padding:22px 14px 54px}.hero h1{font-size:2rem}.papel-picado{gap:4px}.papel-picado span{width:27px;height:18px}.hero-buttons{flex-direction:column}.hero-buttons .btn{width:min(260px,100%)}main{width:92%;margin-top:20px}.section-card{padding:18px 15px}.works-grid,.rules-list{grid-template-columns:1fr}.site-footer{padding:30px 5% 16px}.modal-content{padding:22px 18px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
 </head>
-
 <body>
+<header class="institutional-header">
+  <img src="./encabezado-unam.png" alt="Facultad de Medicina UNAM y Departamento de Salud Digital" onerror="this.style.display='none';">
+</header>
 
-  <header class="institutional-header">
-    <img
-      src="./encabezado-unam.png"
-      alt="Facultad de Medicina UNAM y Departamento de Salud Digital"
-      onerror="this.style.display='none';"
-    >
-  </header>
+<section class="hero" id="inicio">
+  <div class="papel-picado" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <h1>Tlacuaverita Literaria</h1>
+  <p>Concurso del Departamento de Salud Digital</p>
+  <p class="institution-name">Facultad de Medicina, UNAM</p>
+  <div class="hero-buttons">
+    <button class="btn btn-primary" type="button" id="openRegistration">Inscríbete</button>
+    <button class="btn btn-orange" type="button" id="openVoting">Votar por QR</button>
+  </div>
+</section>
 
-  <section class="hero" id="inicio">
-
-    <div class="papel-picado" aria-hidden="true">
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
+<main>
+  <section class="section-card" id="grafica">
+    <h2>Así va nuestra Tlacuaverita</h2>
+    <p class="section-intro">Consulta las calaveritas aprobadas y los resultados disponibles.</p>
+    <div class="chart-container">
+      <svg id="pieChart" class="pie-chart" viewBox="0 0 400 400" role="img" aria-label="Gráfica circular de las calaveritas participantes">
+        <g id="pieSlices"></g>
+        <circle id="emptyChartCircle" class="empty-chart-circle" cx="200" cy="200" r="175"/>
+        <circle class="chart-hole" cx="200" cy="200" r="77"/>
+        <g id="sugarSkull" transform="translate(200 197)">
+          <path d="M-49 -20 C-49 -48 -28 -65 0 -65 C28 -65 49 -48 49 -20 L45 18 C44 33 32 42 20 43 L15 57 L-15 57 L-20 43 C-32 42 -44 33 -45 18 Z" fill="#fff5df" stroke="#e9a6ef" stroke-width="2.5"/>
+          <path d="M-30 -44 Q-15 -56 0 -44 Q15 -56 30 -44" fill="none" stroke="#ff7900" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="-22" cy="-39" r="4" fill="#7918d0"/><circle cx="0" cy="-48" r="4" fill="#d83d85"/><circle cx="22" cy="-39" r="4" fill="#7918d0"/>
+          <circle cx="-20" cy="-12" r="14" fill="#7918d0"/><circle cx="20" cy="-12" r="14" fill="#7918d0"/><circle cx="-20" cy="-12" r="5" fill="#ffd36a"/><circle cx="20" cy="-12" r="5" fill="#ffd36a"/>
+          <path d="M0 2 L-7 12 L7 12 Z" fill="#ff7900"/>
+          <path d="M-20 25 Q0 36 20 25" fill="none" stroke="#d83d85" stroke-width="4" stroke-linecap="round"/>
+          <path d="M-9 28 L-9 33 M0 29 L0 35 M9 28 L9 33" stroke="#7918d0" stroke-width="2" stroke-linecap="round"/>
+          <g transform="translate(-39 8)"><circle cx="0" cy="-7" r="5" fill="#ff7900"/><circle cx="7" cy="0" r="5" fill="#ff7900"/><circle cx="0" cy="7" r="5" fill="#ff7900"/><circle cx="-7" cy="0" r="5" fill="#ff7900"/><circle cx="0" cy="0" r="3" fill="#ffd36a"/></g>
+          <g transform="translate(39 8)"><circle cx="0" cy="-7" r="5" fill="#d83d85"/><circle cx="7" cy="0" r="5" fill="#d83d85"/><circle cx="0" cy="7" r="5" fill="#d83d85"/><circle cx="-7" cy="0" r="5" fill="#d83d85"/><circle cx="0" cy="0" r="3" fill="#ffd36a"/></g>
+        </g>
+      </svg>
     </div>
-
-    <h1>Tlacuaverita Literaria</h1>
-    <p>Concurso del Departamento de Salud Digital</p>
-    <p class="institution-name">Facultad de Medicina, UNAM</p>
-
-    <div class="hero-buttons">
-      <button class="btn btn-primary" type="button" id="openRegistration">
-        Inscríbete
-      </button>
-
-      <button class="btn btn-orange" type="button" id="openVoting">
-        Votar por QR
-      </button>
-    </div>
-
+    <p class="chart-note" id="chartNote">Aún no hay calaveritas registradas. Cuando se aprueben las primeras obras, aparecerán en esta gráfica.</p>
   </section>
 
-  <main>
+  <section class="section-card" id="calaveritas">
+    <h2>Calaveritas participantes</h2>
+    <p class="section-intro">Conoce las obras aprobadas por el comité organizador.</p>
+    <div class="works-grid" id="worksGrid"><div class="empty-state"><p>Todavía no hay calaveritas publicadas. Las obras aparecerán aquí después de su revisión y aprobación.</p></div></div>
+  </section>
 
-    <section class="section-card" id="grafica">
+  <section class="section-card" id="bases">
+    <h2>¿Cómo participar?</h2>
+    <p class="section-intro">Participa con una calaverita literaria original relacionada con la Salud Digital.</p>
+    <ul class="rules-list">
+      <li><strong>Tema: Salud Digital</strong>Puedes inspirarte en la tecnología aplicada a la medicina, la inteligencia artificial, la educación médica, la investigación científica o la innovación en salud. También puedes incluir tlacuaches como protagonistas.</li>
+      <li><strong>Originalidad</strong>No se permite el uso de inteligencia artificial para elaborar la calaverita.</li>
+      <li><strong>Formato y diseño</strong>La presentación es libre.</li>
+      <li><strong>Datos de identificación</strong>Coloca tu nombre completo y grupo en tu trabajo.</li>
+      <li><strong>Lugar de entrega</strong>Aula 5 del Departamento de Salud Digital.</li>
+      <li><strong>Periodo de recepción</strong>Del 15 al 29 de octubre.</li>
+      <li><strong>Votación</strong>Podrás votar por tu favorita mediante el código QR habilitado para el concurso.</li>
+      <li><strong>Premiación</strong>Las tres calaveritas más votadas recibirán premios.</li>
+      <li><strong>Anuncio de ganadores</strong>30 de octubre.</li>
+    </ul>
+    <p class="closing-message">¡Que la Catrina se lleve tus versos, pero no tu creatividad!</p>
+  </section>
+</main>
 
-      <h2>Así va nuestra Tlacuaverita</h2>
-
-      <p class="section-intro">
-        Consulta las calaveritas aprobadas y los resultados disponibles.
-      </p>
-
-      <div class="chart-container">
-
-        <svg
-          id="pieChart"
-          class="pie-chart"
-          viewBox="0 0 400 400"
-          role="img"
-          aria-label="Gráfica circular de las calaveritas participantes"
-        >
-          <g id="pieSlices"></g>
-
-          <circle
-            id="emptyChartCircle"
-            class="empty-chart-circle"
-            cx="200"
-            cy="200"
-            r="175"
-          />
-
-          <!-- Centro -->
-          <circle
-            class="chart-hole"
-            cx="200"
-            cy="200"
-            r="77"
-          />
-
-          <!-- CALAVERITA DE AZÚCAR -->
-          <g id="sugarSkull" transform="translate(200 197)">
-
-            <path
-              d="M-49 -20
-                 C-49 -48 -28 -65 0 -65
-                 C28 -65 49 -48 49 -20
-                 L45 18
-                 C44 33 32 42 20 43
-                 L15 57 L-15 57 L-20 43
-                 C-32 42 -44 33 -45 18 Z"
-              fill="#fff5df"
-              stroke="#e9a6ef"
-              stroke-width="2.5"
-            />
-
-            <path
-              d="M-30 -44 Q-15 -56 0 -44 Q15 -56 30 -44"
-              fill="none"
-              stroke="#ff7900"
-              stroke-width="5"
-              stroke-linecap="round"
-            />
-
-            <circle cx="-22" cy="-39" r="4" fill="#7918d0"/>
-            <circle cx="0" cy="-48" r="4" fill="#d83d85"/>
-            <circle cx="22" cy="-39" r="4" fill="#7918d0"/>
-
-            <circle cx="-20" cy="-12" r="14" fill="#7918d0"/>
-            <circle cx="20" cy="-12" r="14" fill="#7918d0"/>
-            <circle cx="-20" cy="-12" r="5" fill="#ffd36a"/>
-            <circle cx="20" cy="-12" r="5" fill="#ffd36a"/>
-
-            <path d="M0 2 L-7 12 L7 12 Z" fill="#ff7900"/>
-
-            <path
-              d="M-20 25 Q0 36 20 25"
-              fill="none"
-              stroke="#d83d85"
-              stroke-width="4"
-              stroke-linecap="round"
-            />
-
-            <path
-              d="M-9 28 L-9 33 M0 29 L0 35 M9 28 L9 33"
-              stroke="#7918d0"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-
-            <g transform="translate(-39 8)">
-              <circle cx="0" cy="-7" r="5" fill="#ff7900"/>
-              <circle cx="7" cy="0" r="5" fill="#ff7900"/>
-              <circle cx="0" cy="7" r="5" fill="#ff7900"/>
-              <circle cx="-7" cy="0" r="5" fill="#ff7900"/>
-              <circle cx="0" cy="0" r="3" fill="#ffd36a"/>
-            </g>
-
-            <g transform="translate(39 8)">
-              <circle cx="0" cy="-7" r="5" fill="#d83d85"/>
-              <circle cx="7" cy="0" r="5" fill="#d83d85"/>
-              <circle cx="0" cy="7" r="5" fill="#d83d85"/>
-              <circle cx="-7" cy="0" r="5" fill="#d83d85"/>
-              <circle cx="0" cy="0" r="3" fill="#ffd36a"/>
-            </g>
-
-          </g>
-        </svg>
-
+<footer class="site-footer">
+  <div class="footer-grid">
+    <section>
+      <h2>Contacto</h2>
+      <h3>Departamento de Salud Digital</h3>
+      <p><strong>FACULTAD DE MEDICINA</strong><br>Circuito Interior, Ciudad Universitaria<br>Av. Universidad 3000, C.P. 04510<br>Ciudad de México, México</p>
+      <div class="map-container"><iframe title="Ubicación de la Facultad de Medicina UNAM" src="https://maps.google.com/maps?q=Facultad%20de%20Medicina%20UNAM&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+    </section>
+    <section>
+      <h2>Directorio</h2>
+      <h3>Departamento de Salud Digital</h3>
+      <p>Facultad de Medicina, UNAM</p>
+      <div class="footer-social" aria-label="Redes sociales de la Facultad de Medicina">
+        <a class="social-link" href="https://www.facebook.com/FacultadMedicinaUNAM/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
+        <a class="social-link" href="https://x.com/FacMedicinaUNAM" target="_blank" rel="noopener noreferrer" aria-label="X">X</a>
+        <a class="social-link" href="https://www.youtube.com/watch?v=iOUQvlFIXGs" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YT</a>
+        <a class="social-link" href="https://www.instagram.com/fac.medicinaunam/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
+        <a class="social-link" href="https://www.tiktok.com/@fac.medicinaunam" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TT</a>
+        <a class="social-link" href="https://open.spotify.com/intl-es/" target="_blank" rel="noopener noreferrer" aria-label="Spotify">S</a>
       </div>
-
-      <p class="chart-note" id="chartNote">
-        Aún no hay calaveritas registradas. Cuando se aprueben las primeras
-        obras, aparecerán en esta gráfica.
-      </p>
-
-    </section>
-
-    <section class="section-card" id="calaveritas">
-
-      <h2>Calaveritas participantes</h2>
-
-      <p class="section-intro">
-        Conoce las obras aprobadas por el comité organizador.
-      </p>
-
-      <div class="works-grid" id="worksGrid">
-        <div class="empty-state">
-          <p>
-            Todavía no hay calaveritas publicadas.
-            Las obras aparecerán aquí después de su revisión y aprobación.
-          </p>
-        </div>
+      <div class="footer-logos">
+        <img src="./gaceta-facmed.png" alt="Gaceta Facultad de Medicina" onerror="this.style.display='none';">
+        <img src="./logos-institucionales.png" alt="Logotipos institucionales UNAM y Facultad de Medicina" onerror="this.style.display='none';">
       </div>
-
     </section>
-
-    <section class="section-card" id="bases">
-
-      <h2>¿Cómo participar?</h2>
-
-      <p class="section-intro">
-        Participa con una calaverita literaria original relacionada con
-        la Salud Digital.
-      </p>
-
-      <ul class="rules-list">
-
-        <li>
-          <strong>Tema: Salud Digital</strong>
-          Puedes inspirarte en la tecnología aplicada a la medicina,
-          la inteligencia artificial, la educación médica, la investigación
-          científica o la innovación en salud. También puedes incluir
-          tlacuaches como protagonistas.
-        </li>
-
-        <li>
-          <strong>Originalidad</strong>
-          No se permite el uso de inteligencia artificial para elaborar
-          la calaverita.
-        </li>
-
-        <li>
-          <strong>Formato y diseño</strong>
-          La presentación es libre.
-        </li>
-
-        <li>
-          <strong>Datos de identificación</strong>
-          Coloca tu nombre completo y grupo en tu trabajo.
-        </li>
-
-        <li>
-          <strong>Lugar de entrega</strong>
-          Aula 5 del Departamento de Salud Digital.
-        </li>
-
-        <li>
-          <strong>Periodo de recepción</strong>
-          Del 19 al 29 de octubre.
-        </li>
-
-        <li>
-          <strong>Votación</strong>
-          Las calaveritas se exhibirán en el departamento. Podrás votar
-          por tu favorita mediante el código QR de cada obra.
-        </li>
-
-        <li>
-          <strong>Premiación</strong>
-          Las tres calaveritas más votadas recibirán premios.
-        </li>
-
-        <li>
-          <strong>Anuncio de ganadores</strong>
-          30 de octubre.
-        </li>
-
-      </ul>
-
-      <p class="closing-message">
-        ¡Que la Catrina se lleve tus versos, pero no tu creatividad!
-      </p>
-
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-
-    <div class="footer-grid">
-
-      <section>
-        <h2>Contacto</h2>
-
-        <h3>Departamento de Salud Digital</h3>
-
-        <p>
-          <strong>FACULTAD DE MEDICINA</strong><br>
-          Circuito Interior, Ciudad Universitaria<br>
-          Av. Universidad 3000, C.P. 04510<br>
-          Edificio “A”, Basamento
-        </p>
-
-        <p>
-          <strong>Teléfono:</strong>
-          <a href="tel:+525556232300">55 5623 2300</a>
-        </p>
-
-        <div class="map-container">
-          <iframe
-            title="Ubicación de la Facultad de Medicina UNAM"
-            src="https://maps.google.com/maps?q=Facultad%20de%20Medicina%20UNAM&t=&z=15&ie=UTF8&iwloc=&output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </section>
-
-      <section>
-        <h2>Directorio</h2>
-
-        <h3>Dr. Alejandro Alayola Sansores</h3>
-        <p>Jefe del Departamento</p>
-
-        <h3>Dr. Jorge Martínez López</h3>
-        <p>Coordinador de Investigación y Desarrollo</p>
-
-        <h3>Dra. Verónica Daniela Durán Pérez</h3>
-        <p>Coordinadora de Evaluación</p>
-
-        <h3>Ing. Fabián Fernández Saldívar</h3>
-        <p>Coordinador de Enseñanza</p>
-
-        <div class="footer-social"
-             aria-label="Redes sociales de la Facultad de Medicina">
-
-          <a class="social-link"
-             href="https://www.facebook.com/FacultadMedicinaUNAM/"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="Facebook">f</a>
-
-          <a class="social-link"
-             href="https://x.com/FacMedicinaUNAM"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="X">X</a>
-
-          <a class="social-link"
-             href="https://www.youtube.com/watch?v=iOUQvlFIXGs"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="YouTube">YT</a>
-
-          <a class="social-link"
-             href="https://www.instagram.com/fac.medicinaunam/?utm_source=ig_embed"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="Instagram">IG</a>
-
-          <a class="social-link"
-             href="https://www.tiktok.com/@fac.medicinaunam?_t=ZM-8uC8hhUMrVW&_r=1"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="TikTok">TT</a>
-
-          <a class="social-link"
-             href="https://open.spotify.com/intl-es/"
-             target="_blank" rel="noopener noreferrer"
-             aria-label="Spotify">S</a>
-
-        </div>
-
-        <div class="footer-logos">
-          <img
-            src="./gaceta-facmed.png"
-            alt="Gaceta Facultad de Medicina"
-            onerror="this.style.display='none';"
-          >
-
-          <img
-            src="./logos-institucionales.png"
-            alt="Logotipos institucionales UNAM y Facultad de Medicina"
-            onerror="this.style.display='none';"
-          >
-        </div>
-
-      </section>
-
-    </div>
-
-    <div class="footer-legal">
-      Hecho en México, Universidad Nacional Autónoma de México (UNAM),
-      Facultad de Medicina, todos los derechos reservados 2026.
-      Esta página puede ser reproducida con fines no lucrativos, siempre
-      que se cite la fuente completa y su dirección electrónica.
-      De otra forma, requiere permiso previo por escrito de la institución.
-    </div>
-
-  </footer>
-
-  <div
-    class="modal"
-    id="registrationModal"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="registrationTitle"
-  >
-    <div class="modal-content">
-
-      <button
-        class="modal-close"
-        type="button"
-        data-close="registrationModal"
-        aria-label="Cerrar"
-      >&times;</button>
-
-      <h2 id="registrationTitle">Participa en la Tlacuaverita</h2>
-
-      <p>
-        Recuerda que debes entregar tu calaverita físicamente en el Aula 5
-        del Departamento de Salud Digital.
-      </p>
-
-      <form id="registrationForm">
-
-        <div class="form-group">
-          <label for="participantName">Nombre completo</label>
-          <input
-            id="participantName"
-            name="participantName"
-            type="text"
-            required
-            placeholder="Escribe tu nombre completo"
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="participantGroup">Grupo</label>
-          <input
-            id="participantGroup"
-            name="participantGroup"
-            type="text"
-            required
-            placeholder="Escribe tu grupo"
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="workTitle">Título de tu calaverita</label>
-          <input
-            id="workTitle"
-            name="workTitle"
-            type="text"
-            required
-            placeholder="Título de la obra"
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="workImage">Imagen de tu calaverita (PNG o JPG)</label>
-
-          <input
-            id="workImage"
-            name="workImage"
-            type="file"
-            accept=".png,.jpg,.jpeg,image/png,image/jpeg"
-            required
-          >
-
-          <p class="upload-help">
-            Formatos aceptados: PNG y JPG. Tamaño máximo: 10 MB.
-          </p>
-
-          <div class="preview-container" id="previewContainer">
-            <img id="imagePreview" alt="Vista previa de la calaverita">
-
-            <p class="preview-caption" id="previewCaption"></p>
-
-            <button
-              class="btn btn-orange"
-              type="button"
-              id="removeImage"
-            >
-              Quitar imagen
-            </button>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="workDescription">Comentario opcional</label>
-          <textarea
-            id="workDescription"
-            name="workDescription"
-            placeholder="Cuéntanos brevemente sobre tu obra"
-          ></textarea>
-        </div>
-
-        <p class="form-note">
-          Este formulario todavía no guarda los datos ni la imagen.
-          Es necesario conectar un servicio de almacenamiento para recibir
-          las inscripciones.
-        </p>
-
-        <button class="btn btn-primary" type="submit">
-          Revisar registro
-        </button>
-
-        <div
-          id="registrationMessage"
-          class="form-message hidden"
-          role="status"
-        ></div>
-
-      </form>
-    </div>
   </div>
+  <div class="footer-legal">Hecho en México, Universidad Nacional Autónoma de México (UNAM), Facultad de Medicina. Todos los derechos reservados 2026.</div>
+</footer>
 
-  <!-- MODAL PARA VER UNA CALAVERITA -->
-  <div
-    class="modal"
-    id="workDetailModal"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="workDetailTitle"
-  >
-    <div class="modal-content">
-
-      <button
-        class="modal-close"
-        type="button"
-        data-close="workDetailModal"
-        aria-label="Cerrar"
-      >&times;</button>
-
-      <h2 id="workDetailTitle">Título de la calaverita</h2>
-
-      <p class="work-detail-author" id="workDetailAuthor"></p>
-
-      <img
-        class="work-detail-image hidden"
-        id="workDetailImage"
-        alt="Imagen de la calaverita seleccionada"
-      >
-
-      <p
-        class="work-detail-description hidden"
-        id="workDetailDescription"
-      ></p>
-
-    </div>
-  </div>
-
-  <div
-    class="modal"
-    id="votingModal"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="votingTitle"
-  >
-    <div class="modal-content">
-
-      <button
-        class="modal-close"
-        type="button"
-        data-close="votingModal"
-        aria-label="Cerrar"
-      >&times;</button>
-
-      <h2 id="votingTitle">Vota por tu favorita</h2>
-
-      <p>
-        Escanea el código QR que acompaña a la calaverita que elegiste.
-      </p>
-
+<!-- VENTANA DE REGISTRO -->
+<div class="modal" id="registrationModal" role="dialog" aria-modal="true" aria-labelledby="registrationTitle">
+  <div class="modal-content">
+    <button class="modal-close" type="button" data-close="registrationModal" aria-label="Cerrar">&times;</button>
+    <h2 id="registrationTitle">Participa en la Tlacuaverita</h2>
+    <p>Recuerda que debes entregar tu calaverita físicamente en el Aula 5 del Departamento de Salud Digital.</p>
+    <form id="registrationForm">
+      <div class="form-group"><label for="participantName">Nombre completo</label><input id="participantName" name="participantName" type="text" required placeholder="Escribe tu nombre completo"></div>
+      <div class="form-group"><label for="participantGroup">Grupo</label><input id="participantGroup" name="participantGroup" type="text" required placeholder="Escribe tu grupo"></div>
+      <div class="form-group"><label for="workTitle">Título de tu calaverita</label><input id="workTitle" name="workTitle" type="text" required placeholder="Título de la obra"></div>
       <div class="form-group">
-        <label for="surveyLink">Enlace oficial de votación</label>
-        <input
-          id="surveyLink"
-          type="url"
-          placeholder="Pega aquí el enlace de tu encuesta"
-        >
+        <label for="workImage">Imagen de tu calaverita (PNG o JPG)</label>
+        <input id="workImage" name="workImage" type="file" accept=".png,.jpg,.jpeg,image/png,image/jpeg" required>
+        <p class="upload-help">Formatos aceptados: PNG y JPG. Tamaño máximo: 10 MB.</p>
+        <div class="preview-container" id="previewContainer">
+          <img id="imagePreview" alt="Vista previa de la calaverita">
+          <p class="preview-caption" id="previewCaption"></p>
+          <button class="btn btn-orange" type="button" id="removeImage">Quitar imagen</button>
+        </div>
       </div>
-
-      <button class="btn btn-orange" type="button" id="goToSurvey">
-        Abrir encuesta
-      </button>
-
-      <p class="form-note">
-        La votación todavía no está conectada a una base de datos.
-      </p>
-
-      <div
-        id="votingMessage"
-        class="form-message hidden"
-        role="status"
-      ></div>
-
-    </div>
+      <div class="form-group"><label for="workDescription">Comentario opcional</label><textarea id="workDescription" name="workDescription" placeholder="Cuéntanos brevemente sobre tu obra"></textarea></div>
+      <p class="form-note">Este formulario permite validar los datos y previsualizar la imagen, pero todavía no guarda ni envía la inscripción.</p>
+      <button class="btn btn-primary" type="submit">Revisar registro</button>
+      <div id="registrationMessage" class="form-message hidden" role="status"></div>
+    </form>
   </div>
+</div>
 
-  <script>
+<!-- VENTANA DE DETALLE DE OBRA -->
+<div class="modal" id="workDetailModal" role="dialog" aria-modal="true" aria-labelledby="workDetailTitle">
+  <div class="modal-content">
+    <button class="modal-close" type="button" data-close="workDetailModal" aria-label="Cerrar">&times;</button>
+    <h2 id="workDetailTitle">Título de la calaverita</h2>
+    <p class="work-detail-author" id="workDetailAuthor"></p>
+    <img class="work-detail-image hidden" id="workDetailImage" alt="Imagen de la calaverita seleccionada">
+    <p class="work-detail-description hidden" id="workDetailDescription"></p>
+  </div>
+</div>
 
-    const works = [];
+<!-- VENTANA DE VOTACIÓN -->
+<div class="modal" id="votingModal" role="dialog" aria-modal="true" aria-labelledby="votingTitle">
+  <div class="modal-content">
+    <button class="modal-close" type="button" data-close="votingModal" aria-label="Cerrar">&times;</button>
+    <h2 id="votingTitle">Vota por tu favorita</h2>
+    <p>Ingresa el enlace oficial de la encuesta o escanea el código QR de votación.</p>
+    <div class="form-group"><label for="surveyLink">Enlace oficial de votación</label><input id="surveyLink" type="url" placeholder="https://..." autocomplete="url"></div>
+    <button class="btn btn-orange" type="button" id="goToSurvey">Abrir encuesta</button>
+    <p class="form-note">La votación debe configurarse con el enlace oficial del concurso.</p>
+    <div id="votingMessage" class="form-message hidden" role="status"></div>
+  </div>
+</div>
 
-    /*
-      Cada obra real deberá tener esta estructura:
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
 
-      {
-        id: "identificador-unico",
-        title: "Título de la calaverita",
-        author: "Nombre del participante",
-        group: "Grupo",
-        image: "URL pública de la imagen",
-        description: "Comentario opcional",
-        approved: true
-      }
+  // Lista vacía a propósito: no se muestran obras ficticias.
+  const works = [];
 
-    const pieSlices = document.getElementById("pieSlices");
-    const emptyChartCircle =
-      document.getElementById("emptyChartCircle");
+  const registrationModal = document.getElementById("registrationModal");
+  const votingModal = document.getElementById("votingModal");
+  const workDetailModal = document.getElementById("workDetailModal");
 
-    const chartNote = document.getElementById("chartNote");
-    const svgNS = "http://www.w3.org/2000/svg";
+  function openModal(modal) {
+    if (modal) modal.classList.add("open");
+  }
 
-    const sliceColors = [
-      "#7918d0",
-      "#ff7900",
-      "#a43b72",
-      "#ff9c36",
-      "#6f20bd",
-      "#d83d85",
-      "#8c39d0",
-      "#e87519",
-      "#54216f",
-      "#cc5b15",
-      "#b14c8b",
-      "#9650d4"
-    ];
+  function closeModal(modal) {
+    if (modal) modal.classList.remove("open");
+  }
 
-    function polarPoint(cx, cy, radius, angle) {
-      const radians = (angle - 90) * Math.PI / 180;
+  const openRegistration = document.getElementById("openRegistration");
+  const openVoting = document.getElementById("openVoting");
 
-      return {
-        x: cx + radius * Math.cos(radians),
-        y: cy + radius * Math.sin(radians)
-      };
+  if (openRegistration) openRegistration.addEventListener("click", () => openModal(registrationModal));
+  if (openVoting) openVoting.addEventListener("click", () => openModal(votingModal));
+
+  document.querySelectorAll("[data-close]").forEach((button) => {
+    button.addEventListener("click", () => closeModal(document.getElementById(button.dataset.close)));
+  });
+
+  document.querySelectorAll(".modal").forEach((modal) => {
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeModal(modal);
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") document.querySelectorAll(".modal.open").forEach(closeModal);
+  });
+
+  // Vista previa de imagen
+  const workImageInput = document.getElementById("workImage");
+  const previewContainer = document.getElementById("previewContainer");
+  const imagePreview = document.getElementById("imagePreview");
+  const previewCaption = document.getElementById("previewCaption");
+  let currentImageUrl = null;
+
+  function clearImagePreview() {
+    if (currentImageUrl) URL.revokeObjectURL(currentImageUrl);
+    currentImageUrl = null;
+    imagePreview.removeAttribute("src");
+    previewCaption.textContent = "";
+    previewContainer.classList.remove("visible");
+    workImageInput.value = "";
+  }
+
+  workImageInput.addEventListener("change", () => {
+    const file = workImageInput.files[0];
+    if (!file) return clearImagePreview();
+
+    if (!["image/png", "image/jpeg"].includes(file.type)) {
+      alert("Selecciona una imagen PNG o JPG.");
+      clearImagePreview();
+      return;
     }
 
-    function createSlicePath(startAngle, endAngle) {
-      const cx = 200;
-      const cy = 200;
-      const radius = 175;
-
-      const start = polarPoint(cx, cy, radius, startAngle);
-      const end = polarPoint(cx, cy, radius, endAngle);
-
-      const largeArc = endAngle - startAngle > 180 ? 1 : 0;
-
-      return [
-        `M ${cx} ${cy}`,
-        `L ${start.x} ${start.y}`,
-        `A ${radius} ${radius} 0 ${largeArc} 1 ${end.x} ${end.y}`,
-        "Z"
-      ].join(" ");
+    if (file.size > 10 * 1024 * 1024) {
+      alert("La imagen no debe superar los 10 MB.");
+      clearImagePreview();
+      return;
     }
 
-    function getApprovedWorks() {
-      return works.filter((work) => work.approved === true);
+    if (currentImageUrl) URL.revokeObjectURL(currentImageUrl);
+    currentImageUrl = URL.createObjectURL(file);
+    imagePreview.src = currentImageUrl;
+    previewCaption.textContent = file.name + " · " + (file.size / 1024 / 1024).toFixed(2) + " MB";
+    previewContainer.classList.add("visible");
+  });
+
+  document.getElementById("removeImage").addEventListener("click", clearImagePreview);
+
+  // Validación local del formulario; no guarda datos en un servidor.
+  const registrationForm = document.getElementById("registrationForm");
+  const registrationMessage = document.getElementById("registrationMessage");
+
+  registrationForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!registrationForm.reportValidity()) return;
+
+    const file = workImageInput.files[0];
+    if (!file) {
+      registrationMessage.textContent = "Selecciona la imagen de tu calaverita.";
+      registrationMessage.classList.remove("hidden");
+      return;
     }
 
-    function renderChart() {
-      pieSlices.replaceChildren();
+    registrationMessage.textContent =
+      "¡Los datos están completos y la imagen es válida! La inscripción todavía no se envió ni guardó. Para recibirla necesitamos conectar una base de datos.";
+    registrationMessage.classList.remove("hidden");
+  });
 
-      const approvedWorks = getApprovedWorks();
-      const hasWorks = approvedWorks.length > 0;
+  // Enlace de votación
+  const surveyLink = document.getElementById("surveyLink");
+  const votingMessage = document.getElementById("votingMessage");
 
-      emptyChartCircle.style.display = hasWorks ? "none" : "block";
+  document.getElementById("goToSurvey").addEventListener("click", () => {
+    const value = surveyLink.value.trim();
 
-      if (!hasWorks) {
-        chartNote.textContent =
-          "Aún no hay calaveritas registradas. Cuando se aprueben " +
-          "las primeras obras, aparecerán en esta gráfica.";
+    if (!value) {
+      votingMessage.textContent = "Pega primero el enlace oficial de votación.";
+      votingMessage.classList.remove("hidden");
+      return;
+    }
 
-        return;
-      }
+    let url;
+    try {
+      url = new URL(value);
+      if (!["https:", "http:"].includes(url.protocol)) throw new Error("URL no válida");
+    } catch (error) {
+      votingMessage.textContent = "El enlace no es válido. Debe comenzar con https:// o http://";
+      votingMessage.classList.remove("hidden");
+      return;
+    }
 
-      chartNote.textContent =
-        "Pasa el cursor sobre una sección o tócala para conocer " +
-        "la calaverita correspondiente.";
+    const opened = window.open(url.href, "_blank", "noopener,noreferrer");
+    votingMessage.textContent = opened
+      ? "Se solicitó abrir la encuesta en otra pestaña."
+      : "El navegador pudo bloquear la ventana emergente. Copia el enlace y ábrelo manualmente.";
+    votingMessage.classList.remove("hidden");
+  });
 
-      const sliceAngle = 360 / approvedWorks.length;
+  // Gráfica circular: solo se crean segmentos para obras aprobadas.
+  const pieSlices = document.getElementById("pieSlices");
+  const emptyChartCircle = document.getElementById("emptyChartCircle");
+  const chartNote = document.getElementById("chartNote");
+  const worksGrid = document.getElementById("worksGrid");
+  const svgNS = "http://www.w3.org/2000/svg";
+  const colors = ["#7918d0","#ff7900","#a43b72","#ff9c36","#6f20bd","#d83d85","#8c39d0","#e87519","#54216f","#cc5b15","#b14c8b","#9650d4"];
 
-      approvedWorks.forEach((work, index) => {
-        const startAngle = index * sliceAngle;
-        const endAngle = (index + 1) * sliceAngle;
+  function polarPoint(cx, cy, radius, angle) {
+    const radians = (angle - 90) * Math.PI / 180;
+    return { x: cx + radius * Math.cos(radians), y: cy + radius * Math.sin(radians) };
+  }
 
-        const path = document.createElementNS(svgNS, "path");
+  function slicePath(startAngle, endAngle) {
+    const cx = 200, cy = 200, radius = 175;
+    const start = polarPoint(cx, cy, radius, startAngle);
+    const end = polarPoint(cx, cy, radius, endAngle);
+    const largeArc = endAngle - startAngle > 180 ? 1 : 0;
+    return `M ${cx} ${cy} L ${start.x} ${start.y} A ${radius} ${radius} 0 ${largeArc} 1 ${end.x} ${end.y} Z`;
+  }
 
-        path.setAttribute(
-          "d",
-          createSlicePath(startAngle, endAngle)
-        );
+  function showWorkDetails(work) {
+    document.getElementById("workDetailTitle").textContent = work.title || "Calaverita sin título";
+    const authorInfo = [];
+    if (work.author) authorInfo.push("Participante: " + work.author);
+    if (work.group) authorInfo.push("Grupo: " + work.group);
+    document.getElementById("workDetailAuthor").textContent = authorInfo.join(" · ");
 
-        path.setAttribute(
-          "fill",
-          sliceColors[index % sliceColors.length]
-        );
+    const image = document.getElementById("workDetailImage");
+    if (work.image) {
+      image.src = work.image;
+      image.alt = "Imagen de " + (work.title || "la calaverita");
+      image.classList.remove("hidden");
+      image.onerror = () => image.classList.add("hidden");
+    } else {
+      image.removeAttribute("src");
+      image.classList.add("hidden");
+    }
 
-        path.setAttribute("class", "pie-slice");
-        path.setAttribute("tabindex", "0");
-        path.setAttribute("role", "button");
+    const description = document.getElementById("workDetailDescription");
+    description.textContent = work.description || "";
+    description.classList.toggle("hidden", !work.description);
+    openModal(workDetailModal);
+  }
 
-        path.setAttribute(
-          "aria-label",
-          "Ver calaverita: " + work.title
-        );
+  function renderChart() {
+    pieSlices.replaceChildren();
+    const approved = works.filter((work) => work.approved === true);
+    emptyChartCircle.style.display = approved.length ? "none" : "block";
 
-        path.setAttribute("aria-haspopup", "dialog");
+    if (!approved.length) {
+      chartNote.textContent = "Aún no hay calaveritas registradas. Cuando se aprueben las primeras obras, aparecerán en esta gráfica.";
+      return;
+    }
 
-        path.addEventListener("mouseenter", () => {
-          path.classList.add("selected");
-        });
+    chartNote.textContent = "Pasa el cursor sobre una sección o tócala para conocer la calaverita correspondiente.";
+    const angle = 360 / approved.length;
 
-        path.addEventListener("mouseleave", () => {
-          path.classList.remove("selected");
-        });
-
-        path.addEventListener("focus", () => {
-          path.classList.add("selected");
-        });
-
-        path.addEventListener("blur", () => {
-          path.classList.remove("selected");
-        });
-
-        path.addEventListener("click", () => {
+    approved.forEach((work, index) => {
+      const path = document.createElementNS(svgNS, "path");
+      path.setAttribute("d", slicePath(index * angle, (index + 1) * angle));
+      path.setAttribute("fill", colors[index % colors.length]);
+      path.setAttribute("class", "pie-slice");
+      path.setAttribute("tabindex", "0");
+      path.setAttribute("role", "button");
+      path.setAttribute("aria-label", "Ver calaverita: " + (work.title || "Sin título"));
+      path.addEventListener("mouseenter", () => path.classList.add("selected"));
+      path.addEventListener("mouseleave", () => path.classList.remove("selected"));
+      path.addEventListener("focus", () => path.classList.add("selected"));
+      path.addEventListener("blur", () => path.classList.remove("selected"));
+      path.addEventListener("click", () => showWorkDetails(work));
+      path.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
           showWorkDetails(work);
-        });
-
-        path.addEventListener("keydown", (event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            showWorkDetails(work);
-          }
-        });
-
-        pieSlices.appendChild(path);
+        }
       });
+      pieSlices.appendChild(path);
+    });
+  }
+
+  function renderWorks() {
+    worksGrid.replaceChildren();
+    const approved = works.filter((work) => work.approved === true);
+
+    if (!approved.length) {
+      const empty = document.createElement("div");
+      empty.className = "empty-state";
+      const p = document.createElement("p");
+      p.textContent = "Todavía no hay calaveritas publicadas. Las obras aparecerán aquí después de su revisión y aprobación.";
+      empty.appendChild(p);
+      worksGrid.appendChild(empty);
+      return;
     }
 
-    const workDetailModal =
-      document.getElementById("workDetailModal");
-
-    const workDetailTitle =
-      document.getElementById("workDetailTitle");
-
-    const workDetailAuthor =
-      document.getElementById("workDetailAuthor");
-
-    const workDetailImage =
-      document.getElementById("workDetailImage");
-
-    const workDetailDescription =
-      document.getElementById("workDetailDescription");
-
-    function showWorkDetails(work) {
-      workDetailTitle.textContent =
-        work.title || "Calaverita sin título";
-
-      const authorText = [];
+    approved.forEach((work) => {
+      const card = document.createElement("article");
+      card.className = "work-card";
+      const title = document.createElement("h3");
+      title.textContent = work.title || "Calaverita sin título";
+      card.appendChild(title);
 
       if (work.author) {
-        authorText.push("Participante: " + work.author);
+        const author = document.createElement("p");
+        author.textContent = "Participante: " + work.author;
+        card.appendChild(author);
       }
-
-      if (work.group) {
-        authorText.push("Grupo: " + work.group);
-      }
-
-      workDetailAuthor.textContent = authorText.join(" · ");
 
       if (work.image) {
-        workDetailImage.src = work.image;
-        workDetailImage.alt =
-          "Imagen de la calaverita " + work.title;
-
-        workDetailImage.classList.remove("hidden");
-
-        workDetailImage.onerror = () => {
-          workDetailImage.removeAttribute("src");
-          workDetailImage.classList.add("hidden");
-        };
-      } else {
-        workDetailImage.removeAttribute("src");
-        workDetailImage.classList.add("hidden");
+        const img = document.createElement("img");
+        img.src = work.image;
+        img.alt = "Imagen de " + (work.title || "la calaverita");
+        img.loading = "lazy";
+        card.appendChild(img);
       }
 
-      if (work.description) {
-        workDetailDescription.textContent = work.description;
-        workDetailDescription.classList.remove("hidden");
-      } else {
-        workDetailDescription.textContent = "";
-        workDetailDescription.classList.add("hidden");
-      }
-
-      workDetailModal.classList.add("open");
-    }
-
-
-    const worksGrid = document.getElementById("worksGrid");
-
-    function renderWorks() {
-      worksGrid.replaceChildren();
-
-      const approvedWorks = getApprovedWorks();
-
-      if (approvedWorks.length === 0) {
-        const emptyState = document.createElement("div");
-        emptyState.className = "empty-state";
-
-        const paragraph = document.createElement("p");
-
-        paragraph.textContent =
-          "Todavía no hay calaveritas publicadas. Las obras aparecerán " +
-          "aquí después de su revisión y aprobación.";
-
-        emptyState.appendChild(paragraph);
-        worksGrid.appendChild(emptyState);
-
-        return;
-      }
-
-      approvedWorks.forEach((work) => {
-        const card = document.createElement("article");
-        card.className = "work-card";
-
-        const title = document.createElement("h3");
-        title.textContent = work.title || "Calaverita sin título";
-        card.appendChild(title);
-
-        if (work.author) {
-          const author = document.createElement("p");
-          author.textContent = "Participante: " + work.author;
-          card.appendChild(author);
-        }
-
-        if (work.image) {
-          const image = document.createElement("img");
-          image.src = work.image;
-          image.alt = "Imagen de " + (work.title || "la calaverita");
-          image.loading = "lazy";
-          card.appendChild(image);
-        }
-
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "btn btn-primary";
-        button.textContent = "Ver calaverita";
-
-        button.addEventListener("click", () => {
-          showWorkDetails(work);
-        });
-
-        card.appendChild(button);
-        worksGrid.appendChild(card);
-      });
-    }
-
-    renderChart();
-    renderWorks();
-
-    const registrationModal =
-      document.getElementById("registrationModal");
-
-    const votingModal =
-      document.getElementById("votingModal");
-
-    document
-      .getElementById("openRegistration")
-      .addEventListener("click", () => {
-        registrationModal.classList.add("open");
-      });
-
-    document
-      .getElementById("openVoting")
-      .addEventListener("click", () => {
-        votingModal.classList.add("open");
-      });
-
-    document.querySelectorAll("[data-close]").forEach((button) => {
-      button.addEventListener("click", () => {
-        document
-          .getElementById(button.dataset.close)
-          .classList.remove("open");
-      });
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "btn btn-primary";
+      button.textContent = "Ver calaverita";
+      button.addEventListener("click", () => showWorkDetails(work));
+      card.appendChild(button);
+      worksGrid.appendChild(card);
     });
+  }
 
-    document.querySelectorAll(".modal").forEach((modal) => {
-      modal.addEventListener("click", (event) => {
-        if (event.target === modal) {
-          modal.classList.remove("open");
-        }
-      });
-    });
+  renderChart();
+  renderWorks();
 
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        document.querySelectorAll(".modal.open").forEach((modal) => {
-          modal.classList.remove("open");
-        });
-      }
-    });
-
-
-    const workImageInput = document.getElementById("workImage");
-    const previewContainer = document.getElementById("previewContainer");
-    const imagePreview = document.getElementById("imagePreview");
-    const previewCaption = document.getElementById("previewCaption");
-
-    let currentImageUrl = null;
-
-    function clearImagePreview() {
-      if (currentImageUrl) {
-        URL.revokeObjectURL(currentImageUrl);
-        currentImageUrl = null;
-      }
-
-      imagePreview.removeAttribute("src");
-      previewCaption.textContent = "";
-      previewContainer.classList.remove("visible");
-      workImageInput.value = "";
-    }
-
-    workImageInput.addEventListener("change", () => {
-      const file = workImageInput.files[0];
-
-      if (!file) {
-        clearImagePreview();
-        return;
-      }
-
-      const validTypes = ["image/png", "image/jpeg"];
-
-      if (!validTypes.includes(file.type)) {
-        alert("Selecciona una imagen en formato PNG o JPG.");
-        clearImagePreview();
-        return;
-      }
-
-      if (file.size > 10 * 1024 * 1024) {
-        alert("La imagen debe pesar menos de 10 MB.");
-        clearImagePreview();
-        return;
-      }
-
-      if (currentImageUrl) {
-        URL.revokeObjectURL(currentImageUrl);
-      }
-
-      currentImageUrl = URL.createObjectURL(file);
-      imagePreview.src = currentImageUrl;
-
-      previewCaption.textContent =
-        file.name + " · " +
-        (file.size / 1024 / 1024).toFixed(2) + " MB";
-
-      previewContainer.classList.add("visible");
-    });
-
-    document
-      .getElementById("removeImage")
-      .addEventListener("click", clearImagePreview);
-
-    document
-      .getElementById("registrationForm")
-      .addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const message =
-          document.getElementById("registrationMessage");
-
-        const file = workImageInput.files[0];
-
-        if (!file) {
-          message.textContent =
-            "Selecciona la imagen PNG o JPG de tu calaverita.";
-
-          message.classList.remove("hidden");
-          return;
-        }
-
-        message.textContent =
-          "Los datos y la imagen se validaron correctamente en esta vista. " +
-          "El registro todavía no se ha enviado ni guardado. " +
-          "Para recibir las inscripciones y mostrar las obras " +
-          "en la gráfica, falta conectar una base de datos.";
-
-        message.classList.remove("hidden");
-      });
-
-    document
-      .getElementById("goToSurvey")
-      .addEventListener("click", () => {
-        const input = document.getElementById("surveyLink");
-        const message = document.getElementById("votingMessage");
-        const value = input.value.trim();
-
-        if (!value) {
-          message.textContent =
-            "Primero ingresa el enlace oficial de votación.";
-
-          message.classList.remove("hidden");
-          return;
-        }
-
-        try {
-          const url = new URL(value);
-
-          if (
-            url.protocol !== "https:" &&
-            url.protocol !== "http:"
-          ) {
-            throw new Error("Enlace no válido");
-          }
-
-          window.open(
-            url.href,
-            "_blank",
-            "noopener,noreferrer"
-          );
-
-          message.textContent =
-            "Se abrió el enlace de votación en otra pestaña.";
-
-          message.classList.remove("hidden");
-
-        } catch (error) {
-          message.textContent =
-            "Escribe un enlace válido que comience con https://";
-
-          message.classList.remove("hidden");
-        }
-      });
-  </script>
-
+  // Para conectar una base de datos en el futuro, se cargan las obras aprobadas
+  // en el arreglo "works" y después se ejecutan renderChart() y renderWorks().
+});
+</script>
 </body>
 </html>
