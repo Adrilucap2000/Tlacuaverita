@@ -1,15 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#280B3A">
-<title>Tlacuaverita Literaria | Salud Digital UNAM</title>
+<title>Tlacuaverita Literaria | UNAM</title>
 
 <style>
 :root {
   --morado: #280B3A;
-  --panel: #50008F;
+  --panel: #3A1450;
   --violeta: #7418C9;
   --naranja: #FF7900;
   --crema: #FFF0D8;
@@ -22,10 +23,24 @@
 body {
   margin: 0;
   background: var(--morado);
-  color: #fff;
+  color: white;
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Franja institucional superior */
+.institutional-header {
+  width: 100%;
+  background: #0b3c67;
+  line-height: 0;
+}
+
+.institutional-header img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Encabezado del concurso */
 header {
   text-align: center;
   padding: 24px 16px;
@@ -64,6 +79,20 @@ header {
 h1 {
   margin: 12px 0 8px;
   font-size: clamp(28px, 5vw, 43px);
+}
+
+h2 {
+  margin-top: 0;
+  color: #ffd4a2;
+  font-size: 24px;
+}
+
+h3 {
+  color: #ffcf9a;
+}
+
+p {
+  line-height: 1.7;
 }
 
 .subtitle {
@@ -116,26 +145,12 @@ main {
 }
 
 .card {
-  background: #3a1450;
+  background: var(--panel);
   border: 1px solid #75428a;
   border-radius: 20px;
   padding: 23px;
   margin-bottom: 23px;
   box-shadow: 0 8px 28px #12051955;
-}
-
-h2 {
-  margin-top: 0;
-  color: #ffd4a2;
-  font-size: 24px;
-}
-
-h3 {
-  color: #ffcf9a;
-}
-
-p {
-  line-height: 1.7;
 }
 
 .hint {
@@ -168,6 +183,7 @@ p {
   color: #f2d9ff;
 }
 
+/* Gráfica circular */
 .chart-layout {
   display: grid;
   grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
@@ -233,13 +249,12 @@ p {
   display: block;
   width: 100%;
   height: auto;
-  overflow: visible;
   background: transparent;
 }
 
 #chartSegments path {
   cursor: pointer;
-  stroke: #280B3A;
+  stroke: var(--morado);
   stroke-width: 2;
   transition: filter .2s;
 }
@@ -247,7 +262,7 @@ p {
 #chartSegments path:hover,
 #chartSegments path:focus {
   filter: brightness(1.2);
-  stroke: #fff;
+  stroke: white;
   stroke-width: 3;
   outline: none;
 }
@@ -259,7 +274,15 @@ p {
 .skull-caption {
   text-align: center;
   margin-top: 16px;
-  line-height: 1.6;
+}
+
+.empty-state {
+  text-align: center;
+  color: #e5c9ef;
+  padding: 15px 10px;
+  border: 1px dashed #8d62a1;
+  border-radius: 12px;
+  line-height: 1.7;
 }
 
 .winner {
@@ -279,6 +302,7 @@ p {
   line-height: 1.7;
 }
 
+/* Bases */
 .rules {
   color: #f8eafa;
   line-height: 1.8;
@@ -302,6 +326,7 @@ p {
   text-align: center;
 }
 
+/* Formulario y ventanas */
 label {
   display: block;
   font-weight: bold;
@@ -333,15 +358,6 @@ input[type="file"] {
   max-height: 240px;
   border-radius: 12px;
   margin-bottom: 16px;
-}
-
-footer {
-  text-align: center;
-  padding: 25px;
-  color: #d9bce6;
-  font-size: 13px;
-  border-top: 1px solid #75428a;
-  line-height: 1.8;
 }
 
 .modal {
@@ -383,8 +399,13 @@ footer {
   color: white;
 }
 
-.close:hover {
-  background: #81439d;
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #d9bce6;
+  font-size: 13px;
+  border-top: 1px solid #75428a;
+  line-height: 1.8;
 }
 
 button:focus-visible,
@@ -419,6 +440,14 @@ input:focus-visible {
 
 <body>
 
+<!-- FRANJA INSTITUCIONAL -->
+<div class="institutional-header">
+  <img
+    src="encabezado-unam.png"
+    alt="Facultad de Medicina UNAM y Departamento de Salud Digital"
+  >
+</div>
+
 <header>
   <div class="papel" aria-hidden="true">
     <span></span><span></span><span></span><span></span>
@@ -441,7 +470,6 @@ input:focus-visible {
 
 <main>
 
-  <!-- CONTADORES -->
   <section class="card">
     <h2>Así va nuestra Tlacuaverita</h2>
 
@@ -462,11 +490,10 @@ input:focus-visible {
     </div>
 
     <p class="hint" id="updateTime">
-      Demostración visual. Los resultados son ficticios.
+      Aún no hay resultados cargados.
     </p>
   </section>
 
-  <!-- GRÁFICA CIRCULAR -->
   <section class="card">
     <h2>Calaveritas y votaciones</h2>
 
@@ -481,7 +508,7 @@ input:focus-visible {
           <svg id="sugarSkull"
                viewBox="0 0 400 400"
                role="img"
-               aria-label="Gráfica circular de votaciones con una calaverita de azúcar en el centro"
+               aria-label="Gráfica circular con una calaverita de azúcar en el centro"
                xmlns="http://www.w3.org/2000/svg">
 
             <defs>
@@ -497,7 +524,7 @@ input:focus-visible {
                     stroke="#FFF0D8"
                     stroke-width="3"/>
 
-            <!-- CALAVERITA CENTRAL -->
+            <!-- Calaverita central -->
             <g id="centerSkull">
               <path d="M200 116
                 C151 116 124 147 124 190
@@ -513,11 +540,13 @@ input:focus-visible {
                 stroke="#D8C8C8"
                 stroke-width="3"/>
 
+              <!-- Pétalos alrededor de los ojos -->
               <g fill="#91BD32">
                 <circle cx="166" cy="181" r="27"/>
                 <circle cx="234" cy="181" r="27"/>
               </g>
 
+              <!-- Ojos -->
               <g fill="#E62E69">
                 <ellipse cx="166" cy="181" rx="24" ry="27"/>
                 <ellipse cx="234" cy="181" rx="24" ry="27"/>
@@ -528,6 +557,7 @@ input:focus-visible {
                 <ellipse cx="234" cy="181" rx="18" ry="21"/>
               </g>
 
+              <!-- Adornos azules -->
               <g fill="#36A9D0">
                 <ellipse cx="145" cy="135" rx="6" ry="13"
                          transform="rotate(-45 145 135)"/>
@@ -535,9 +565,11 @@ input:focus-visible {
                          transform="rotate(45 255 135)"/>
               </g>
 
+              <!-- Nariz -->
               <path d="M200 207 L187 231 Q200 242 213 231Z"
                     fill="#09112F"/>
 
+              <!-- Dientes -->
               <path d="M165 250 Q200 260 235 250
                        L231 270 Q200 278 169 270Z"
                     fill="#FFFFFF"
@@ -550,6 +582,7 @@ input:focus-visible {
                          M219 253 L219 273"/>
               </g>
 
+              <!-- Flor superior -->
               <path d="M151 126 Q200 96 249 126"
                     fill="none"
                     stroke="#E62E69"
@@ -570,13 +603,14 @@ input:focus-visible {
         </div>
 
         <p class="hint skull-caption">
-          Selecciona un segmento o un título de la leyenda para consultar la calaverita.
+          Cuando haya calaveritas aprobadas y resultados disponibles,
+          podrás consultar cada obra desde la gráfica o la leyenda.
         </p>
       </div>
     </div>
 
     <div class="winner" id="winner">
-      Los resultados aparecerán aquí.
+      Todavía no hay resultados de votación.
     </div>
   </section>
 
@@ -646,10 +680,11 @@ input:focus-visible {
 
 <footer>
   Tlacuaverita Literaria<br>
-  Departamento de Salud Digital · Facultad de Medicina · UNAM
+  Departamento de Salud Digital<br>
+  Facultad de Medicina · UNAM
 </footer>
 
-<!-- FORMULARIO -->
+<!-- FORMULARIO DE INSCRIPCIÓN -->
 <div class="modal" id="formModal"
      role="dialog" aria-modal="true"
      aria-labelledby="formTitle">
@@ -696,7 +731,7 @@ input:focus-visible {
   </div>
 </div>
 
-<!-- ENCUESTA EXTERNA -->
+<!-- VOTACIÓN EXTERNA -->
 <div class="modal" id="qrModal"
      role="dialog" aria-modal="true"
      aria-labelledby="qrTitle">
@@ -707,12 +742,7 @@ input:focus-visible {
     <h2 id="qrTitle">Votación oficial</h2>
 
     <p>
-      La encuesta oficial se habilitará cuando el equipo organizador
-      configure su enlace.
-    </p>
-
-    <p class="notice">
-      Esta demostración todavía no recibe votos.
+      La votación se abrirá cuando se configure el enlace de la encuesta.
     </p>
 
     <label for="surveyLink">Enlace de la encuesta</label>
@@ -725,14 +755,13 @@ input:focus-visible {
   </div>
 </div>
 
-<!-- DETALLE DE CADA CALAVERITA -->
+<!-- DETALLE DE CADA OBRA -->
 <div class="modal" id="artModal"
      role="dialog" aria-modal="true"
      aria-labelledby="artTitle">
 
   <div class="modal-content">
     <button class="close" data-close="artModal">Cerrar</button>
-
     <h2 id="artTitle"></h2>
     <img id="artImage" alt="Imagen de la calaverita">
     <p id="artAuthor"></p>
@@ -741,82 +770,25 @@ input:focus-visible {
 </div>
 
 <script>
-/*
- * DATOS FICTICIOS PARA PROBAR EL DISEÑO.
- * No son votos ni inscripciones reales.
- */
-
-const demoWorks = [
-  {
-    id: 1,
-    title: "La Catrina Digital",
-    author: "Participante de ejemplo",
-    votes: 12,
-    color: "#E62E69",
-    image: ""
-  },
-  {
-    id: 2,
-    title: "El Tlacuache y la Catrina",
-    author: "Participante de ejemplo",
-    votes: 8,
-    color: "#F5A623",
-    image: ""
-  },
-  {
-    id: 3,
-    title: "La Muerte en el Hospital",
-    author: "Participante de ejemplo",
-    votes: 6,
-    color: "#FFD447",
-    image: ""
-  },
-  {
-    id: 4,
-    title: "Calaverita Tecnológica",
-    author: "Participante de ejemplo",
-    votes: 4,
-    color: "#76B82A",
-    image: ""
-  },
-  {
-    id: 5,
-    title: "La Catrina Científica",
-    author: "Participante de ejemplo",
-    votes: 3,
-    color: "#269FC5",
-    image: ""
-  },
-  {
-    id: 6,
-    title: "El Último Algoritmo",
-    author: "Participante de ejemplo",
-    votes: 2,
-    color: "#159BA7",
-    image: ""
-  },
-  {
-    id: 7,
-    title: "Versos del Futuro",
-    author: "Participante de ejemplo",
-    votes: 2,
-    color: "#8E2BE2",
-    image: ""
-  },
-  {
-    id: 8,
-    title: "La Muerte Innovadora",
-    author: "Participante de ejemplo",
-    votes: 1,
-    color: "#A33D72",
-    image: ""
-  }
-];
-
 const $ = id => document.getElementById(id);
 
-let works = [...demoWorks];
+/*
+ * La lista comienza vacía.
+ * Aquí se cargarán las calaveritas aprobadas desde el backend.
+ */
+let works = [];
 let selectedImage = "";
+
+const palette = [
+  "#E62E69",
+  "#F5A623",
+  "#FFD447",
+  "#76B82A",
+  "#269FC5",
+  "#159BA7",
+  "#8E2BE2",
+  "#A33D72"
+];
 
 function openModal(id) {
   $(id).classList.add("open");
@@ -844,19 +816,13 @@ document.addEventListener("keydown", event => {
   }
 });
 
-$("showForm").addEventListener("click", () => {
-  openModal("formModal");
-});
-
-$("showQR").addEventListener("click", () => {
-  openModal("qrModal");
-});
+$("showForm").addEventListener("click", () => openModal("formModal"));
+$("showQR").addEventListener("click", () => openModal("qrModal"));
 
 function showWork(work) {
   $("artTitle").textContent = work.title;
-  $("artAuthor").textContent = "Autor/a: " + work.author;
-  $("artVotes").textContent =
-    "Votos de demostración: " + work.votes;
+  $("artAuthor").textContent = "Autor/a: " + (work.author || "Participante");
+  $("artVotes").textContent = "Votos registrados: " + (work.votes || 0);
 
   $("artImage").hidden = !work.image;
 
@@ -871,26 +837,29 @@ function showWork(work) {
 
 function render() {
   const sorted = [...works].sort((a, b) => b.votes - a.votes);
-  const total = works.reduce((sum, work) => sum + work.votes, 0);
+  const total = works.reduce((sum, work) => sum + (Number(work.votes) || 0), 0);
 
   $("totalWorks").textContent = works.length;
   $("totalVotes").textContent = total;
   $("legend").replaceChildren();
 
-  const svgNS = "http://www.w3.org/2000/svg";
   const segments = $("chartSegments");
   segments.replaceChildren();
 
-  const palette = [
-    "#E62E69",
-    "#F5A623",
-    "#FFD447",
-    "#76B82A",
-    "#269FC5",
-    "#159BA7",
-    "#8E2BE2",
-    "#A33D72"
-  ];
+  if (sorted.length === 0) {
+    $("legend").innerHTML =
+      '<div class="empty-state">Todavía no hay calaveritas aprobadas.<br>Las obras aparecerán aquí después de su revisión.</div>';
+
+    $("updateTime").textContent =
+      "Esperando las primeras calaveritas aprobadas.";
+
+    $("winner").textContent =
+      "Todavía no hay resultados de votación.";
+
+    return;
+  }
+
+  const svgNS = "http://www.w3.org/2000/svg";
 
   sorted.forEach((work, index) => {
     const color = work.color || palette[index % palette.length];
@@ -908,7 +877,7 @@ function render() {
 
     const count = document.createElement("span");
     count.className = "legend-count";
-    count.textContent = `${work.votes} votos`;
+    count.textContent = `${Number(work.votes) || 0} votos`;
 
     button.append(swatch, name, count);
     button.addEventListener("click", () => showWork(work));
@@ -943,42 +912,34 @@ function render() {
 
   let currentAngle = -90;
 
-  const chartWorks = sorted.filter(work => work.votes > 0);
-  const useEqualSegments = total === 0 && sorted.length > 0;
-
-  chartWorks.forEach((work, index) => {
+  sorted.forEach((work, index) => {
+    const votes = Math.max(0, Number(work.votes) || 0);
     const sweep = total > 0
-      ? (work.votes / total) * 360
-      : useEqualSegments
-        ? 360 / sorted.length
-        : 0;
+      ? votes / total * 360
+      : 360 / sorted.length;
 
     if (sweep <= 0) return;
 
     const endAngle = currentAngle + sweep;
-    const path = document.createElementNS(svgNS, "path");
+    const color = work.color || palette[index % palette.length];
 
+    const path = document.createElementNS(svgNS, "path");
     path.setAttribute("d", sectorPath(currentAngle, endAngle));
-    path.setAttribute(
-      "fill",
-      work.color || palette[index % palette.length]
-    );
+    path.setAttribute("fill", color);
     path.setAttribute("tabindex", "0");
     path.setAttribute("role", "button");
 
     const percentage = total > 0
-      ? ((work.votes / total) * 100).toFixed(1)
+      ? (votes / total * 100).toFixed(1)
       : "0.0";
 
     path.setAttribute(
       "aria-label",
-      `${work.title}: ${work.votes} votos, ${percentage}%`
+      `${work.title}: ${votes} votos, ${percentage}%`
     );
 
     const title = document.createElementNS(svgNS, "title");
-    title.textContent =
-      `${work.title}: ${work.votes} votos (${percentage}%)`;
-
+    title.textContent = `${work.title}: ${votes} votos (${percentage}%)`;
     path.appendChild(title);
 
     path.addEventListener("click", () => showWork(work));
@@ -995,17 +956,16 @@ function render() {
   });
 
   $("updateTime").textContent =
-    "Datos de demostración; todavía no son resultados oficiales.";
+    "Última actualización: " + new Date().toLocaleTimeString("es-MX");
 
-  $("winner").textContent = total > 0 && sorted.length
-    ? `Primer lugar de demostración: ${sorted[0].title}, con ${sorted[0].votes} votos ficticios.`
-    : "Todavía no hay resultados de votación.";
+  $("winner").textContent = total > 0
+    ? `Primer lugar provisional: ${sorted[0].title}, con ${sorted[0].votes} votos.`
+    : "Las votaciones todavía no registran votos.";
 }
 
 render();
 
-/* Vista previa de la imagen seleccionada */
-
+/* Vista previa de imagen */
 $("art").addEventListener("change", () => {
   const file = $("art").files[0];
 
@@ -1038,10 +998,10 @@ $("art").addEventListener("change", () => {
 });
 
 /*
- * DEMOSTRACIÓN: el formulario no envía información al servidor.
- * La inscripción real requiere autenticación y almacenamiento.
+ * Hasta conectar el backend, no se almacenan inscripciones.
+ * La validación del navegador no sustituye la autenticación
+ * ni la comprobación del correo en el servidor.
  */
-
 $("entryForm").addEventListener("submit", event => {
   event.preventDefault();
 
@@ -1055,39 +1015,36 @@ $("entryForm").addEventListener("submit", event => {
 
   if (!validDomain) {
     $("formMessage").textContent =
-      "Utiliza un correo @facmed.unam.mx o @unam.mx.";
+      "Utiliza un correo institucional de FacMed o UNAM.";
     return;
   }
 
   if (!selectedImage) {
     $("formMessage").textContent =
-      "Selecciona una imagen válida.";
+      "Selecciona una imagen JPG o PNG.";
     return;
   }
 
   $("formMessage").textContent =
-    "Esta demostración todavía no registra inscripciones reales. Es necesario conectar el servidor para guardar y revisar tu trabajo.";
+    "El diseño del formulario está listo. Para completar tu inscripción debemos conectar la base de datos y la verificación por correo institucional.";
 });
 
-/* Apertura de la encuesta externa */
-
+/* Encuesta externa */
 $("openSurvey").addEventListener("click", () => {
   const link = $("surveyLink").value.trim();
-  let url;
 
   try {
-    url = new URL(link);
+    const url = new URL(link);
+
+    if (url.protocol !== "https:") {
+      alert("La encuesta debe utilizar un enlace HTTPS.");
+      return;
+    }
+
+    window.open(url.href, "_blank", "noopener,noreferrer");
   } catch {
-    alert("Introduce el enlace de la encuesta oficial.");
-    return;
+    alert("Introduce el enlace válido de la encuesta oficial.");
   }
-
-  if (url.protocol !== "https:") {
-    alert("La encuesta debe utilizar un enlace HTTPS.");
-    return;
-  }
-
-  window.open(url.href, "_blank", "noopener,noreferrer");
 });
 </script>
 
