@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,7 +13,6 @@
   --violeta: #7418C9;
   --naranja: #FF7900;
   --crema: #FFF0D8;
-  --cafe: #6B3825;
 }
 
 * {
@@ -24,13 +22,13 @@
 body {
   margin: 0;
   background: var(--morado);
-  color: white;
+  color: #fff;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
   text-align: center;
-  padding: 22px 14px 24px;
+  padding: 24px 16px;
   background: linear-gradient(180deg, #17051f, #35104a);
   border-bottom: 3px solid var(--naranja);
 }
@@ -40,15 +38,19 @@ header {
   justify-content: center;
   flex-wrap: wrap;
   gap: 5px;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
 .papel span {
   width: 35px;
-  height: 19px;
+  height: 21px;
   background: #7418C9;
   border: 2px dashed #ffd7a4;
-  clip-path: polygon(0 0,100% 0,100% 100%,85% 80%,70% 100%,50% 80%,30% 100%,15% 80%,0 100%);
+  clip-path: polygon(
+    0 0, 100% 0, 100% 100%,
+    85% 80%, 70% 100%, 50% 80%,
+    30% 100%, 15% 80%, 0 100%
+  );
 }
 
 .papel span:nth-child(2n) {
@@ -56,24 +58,24 @@ header {
 }
 
 .papel span:nth-child(3n) {
-  background: #8c2c69;
+  background: #a33d72;
 }
 
 h1 {
   margin: 12px 0 8px;
-  font-size: clamp(27px, 5vw, 42px);
+  font-size: clamp(28px, 5vw, 43px);
 }
 
 .subtitle {
   color: #f8d6ff;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 nav {
   display: flex;
   justify-content: center;
-  gap: 12px;
   flex-wrap: wrap;
+  gap: 12px;
   margin-top: 20px;
 }
 
@@ -82,8 +84,8 @@ button {
   border-radius: 10px;
   padding: 12px 18px;
   font-weight: bold;
-  cursor: pointer;
   font-size: 15px;
+  cursor: pointer;
   transition: background .2s, transform .2s;
 }
 
@@ -110,15 +112,15 @@ button {
 main {
   max-width: 1100px;
   margin: auto;
-  padding: 24px 16px 50px;
+  padding: 25px 16px 50px;
 }
 
 .card {
   background: #3a1450;
   border: 1px solid #75428a;
   border-radius: 20px;
-  padding: 22px;
-  margin-bottom: 22px;
+  padding: 23px;
+  margin-bottom: 23px;
   box-shadow: 0 8px 28px #12051955;
 }
 
@@ -130,6 +132,16 @@ h2 {
 
 h3 {
   color: #ffcf9a;
+}
+
+p {
+  line-height: 1.7;
+}
+
+.hint {
+  color: #e5c9ef;
+  font-size: 13px;
+  line-height: 1.7;
 }
 
 .stats {
@@ -205,50 +217,48 @@ h3 {
   white-space: nowrap;
 }
 
-.sugar-skull-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.chart-column {
   width: 100%;
-  max-width: 390px;
-  margin: 0 auto;
-  padding: 8px;
-  border-radius: 24px;
-  background: #fff8e9;
-  box-shadow: 0 10px 30px #16071f66;
+  min-width: 0;
 }
 
-.sugar-skull-wrap svg {
+.circular-chart {
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  background: transparent;
+}
+
+.circular-chart svg {
   display: block;
   width: 100%;
   height: auto;
   overflow: visible;
+  background: transparent;
 }
 
 #chartSegments path {
   cursor: pointer;
-  stroke: #fff8e9;
+  stroke: #280B3A;
   stroke-width: 2;
   transition: filter .2s;
 }
 
 #chartSegments path:hover,
 #chartSegments path:focus {
-  filter: brightness(1.18);
-  stroke: white;
-  stroke-width: 4;
+  filter: brightness(1.2);
+  stroke: #fff;
+  stroke-width: 3;
   outline: none;
+}
+
+#centerSkull {
+  pointer-events: none;
 }
 
 .skull-caption {
   text-align: center;
   margin-top: 16px;
-  line-height: 1.6;
-}
-
-.hint {
-  font-size: 13px;
-  color: #e5c9ef;
   line-height: 1.6;
 }
 
@@ -258,7 +268,7 @@ h3 {
   background: #4a205e;
   border-radius: 8px;
   margin-top: 18px;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .notice {
@@ -266,14 +276,41 @@ h3 {
   border-radius: 10px;
   background: #4b205b;
   color: #ffe6c5;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
-input,
-textarea {
+.rules {
+  color: #f8eafa;
+  line-height: 1.8;
+}
+
+.rules h3 {
+  color: #ffbd72;
+  margin-top: 0;
+}
+
+.rules strong {
+  color: #ffd4a2;
+}
+
+.rules .closing {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #75428a;
+  color: #ffbd72;
+  font-weight: bold;
+  text-align: center;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input {
   width: 100%;
   padding: 12px;
-  margin-top: 6px;
   margin-bottom: 16px;
   border: 1px solid #bb8ad5;
   border-radius: 9px;
@@ -282,8 +319,7 @@ textarea {
   font: inherit;
 }
 
-input::placeholder,
-textarea::placeholder {
+input::placeholder {
   color: #ead5f7;
 }
 
@@ -291,15 +327,10 @@ input[type="file"] {
   background: #4a205e;
 }
 
-label {
-  font-weight: bold;
-  display: block;
-}
-
 .preview {
+  display: none;
   max-width: 100%;
   max-height: 240px;
-  display: none;
   border-radius: 12px;
   margin-bottom: 16px;
 }
@@ -310,17 +341,18 @@ footer {
   color: #d9bce6;
   font-size: 13px;
   border-top: 1px solid #75428a;
+  line-height: 1.8;
 }
 
 .modal {
   position: fixed;
   inset: 0;
-  background: #100515df;
   z-index: 5;
   display: none;
   align-items: center;
   justify-content: center;
   padding: 16px;
+  background: #100515df;
 }
 
 .modal.open {
@@ -338,9 +370,9 @@ footer {
 }
 
 .modal-content img {
+  display: block;
   max-width: 100%;
   max-height: 45vh;
-  display: block;
   margin: 12px auto;
   border-radius: 12px;
 }
@@ -370,8 +402,8 @@ input:focus-visible {
     grid-template-columns: 1fr;
   }
 
-  .sugar-skull-wrap {
-    max-width: 320px;
+  .circular-chart {
+    max-width: 340px;
   }
 
   .card {
@@ -409,6 +441,7 @@ input:focus-visible {
 
 <main>
 
+  <!-- CONTADORES -->
   <section class="card">
     <h2>Así va nuestra Tlacuaverita</h2>
 
@@ -433,159 +466,190 @@ input:focus-visible {
     </p>
   </section>
 
+  <!-- GRÁFICA CIRCULAR -->
   <section class="card">
     <h2>Calaveritas y votaciones</h2>
 
     <div class="chart-layout">
       <div>
-        <h3>Participantes</h3>
+        <h3>Calaveritas participantes</h3>
         <div id="legend" class="legend"></div>
       </div>
 
-      <div>
-        <div class="sugar-skull-wrap">
+      <div class="chart-column">
+        <div class="circular-chart">
           <svg id="sugarSkull"
-               viewBox="0 0 360 420"
+               viewBox="0 0 400 400"
                role="img"
-               aria-label="Gráfica de votaciones con forma de calaverita de azúcar"
+               aria-label="Gráfica circular de votaciones con una calaverita de azúcar en el centro"
                xmlns="http://www.w3.org/2000/svg">
 
             <defs>
-              <clipPath id="skullClip">
-                <path d="M180 22
-                  C105 22 47 65 30 133
-                  C14 197 41 252 78 283
-                  L78 322
-                  C78 344 96 354 113 343
-                  L125 332 L136 352
-                  Q146 365 157 350
-                  L169 333 L180 354
-                  L191 333 L203 350
-                  Q214 365 224 352
-                  L235 332 L247 343
-                  Q282 357 282 322
-                  L282 283
-                  C319 252 346 197 330 133
-                  C313 65 255 22 180 22Z"/>
+              <clipPath id="circleClip">
+                <circle cx="200" cy="200" r="174"/>
               </clipPath>
             </defs>
 
-            <path d="M180 22
-              C105 22 47 65 30 133
-              C14 197 41 252 78 283
-              L78 322
-              C78 344 96 354 113 343
-              L125 332 L136 352
-              Q146 365 157 350
-              L169 333 L180 354
-              L191 333 L203 350
-              Q214 365 224 352
-              L235 332 L247 343
-              Q282 357 282 322
-              L282 283
-              C319 252 346 197 330 133
-              C313 65 255 22 180 22Z"
-              fill="#fff8e9"/>
+            <g id="chartSegments" clip-path="url(#circleClip)"></g>
 
-            <g id="chartSegments" clip-path="url(#skullClip)"></g>
+            <circle cx="200" cy="200" r="174"
+                    fill="none"
+                    stroke="#FFF0D8"
+                    stroke-width="3"/>
 
-            <path d="M180 22
-              C105 22 47 65 30 133
-              C14 197 41 252 78 283
-              L78 322
-              C78 344 96 354 113 343
-              L125 332 L136 352
-              Q146 365 157 350
-              L169 333 L180 354
-              L191 333 L203 350
-              Q214 365 224 352
-              L235 332 L247 343
-              Q282 357 282 322
-              L282 283
-              C319 252 346 197 330 133
-              C313 65 255 22 180 22Z"
-              fill="none"
-              stroke="#e5d9d9"
-              stroke-width="5"/>
+            <!-- CALAVERITA CENTRAL -->
+            <g id="centerSkull">
+              <path d="M200 116
+                C151 116 124 147 124 190
+                C124 220 139 239 155 253
+                L155 274
+                Q155 289 170 289
+                L230 289
+                Q245 289 245 274
+                L245 253
+                C261 239 276 220 276 190
+                C276 147 249 116 200 116Z"
+                fill="#FFF8E9"
+                stroke="#D8C8C8"
+                stroke-width="3"/>
 
-            <!-- Decoración floral de los ojos -->
-            <g fill="none" stroke-width="5">
-              <ellipse cx="115" cy="165" rx="48" ry="52"
-                       stroke="#e62e69"/>
-              <ellipse cx="245" cy="165" rx="48" ry="52"
-                       stroke="#e62e69"/>
+              <g fill="#91BD32">
+                <circle cx="166" cy="181" r="27"/>
+                <circle cx="234" cy="181" r="27"/>
+              </g>
+
+              <g fill="#E62E69">
+                <ellipse cx="166" cy="181" rx="24" ry="27"/>
+                <ellipse cx="234" cy="181" rx="24" ry="27"/>
+              </g>
+
+              <g fill="#09112F">
+                <ellipse cx="166" cy="181" rx="18" ry="21"/>
+                <ellipse cx="234" cy="181" rx="18" ry="21"/>
+              </g>
+
+              <g fill="#36A9D0">
+                <ellipse cx="145" cy="135" rx="6" ry="13"
+                         transform="rotate(-45 145 135)"/>
+                <ellipse cx="255" cy="135" rx="6" ry="13"
+                         transform="rotate(45 255 135)"/>
+              </g>
+
+              <path d="M200 207 L187 231 Q200 242 213 231Z"
+                    fill="#09112F"/>
+
+              <path d="M165 250 Q200 260 235 250
+                       L231 270 Q200 278 169 270Z"
+                    fill="#FFFFFF"
+                    stroke="#E62E69"
+                    stroke-width="2"/>
+
+              <g stroke="#09112F" stroke-width="2">
+                <path d="M181 253 L181 273
+                         M200 256 L200 276
+                         M219 253 L219 273"/>
+              </g>
+
+              <path d="M151 126 Q200 96 249 126"
+                    fill="none"
+                    stroke="#E62E69"
+                    stroke-width="6"
+                    stroke-linecap="round"/>
+
+              <g fill="#8E2BE2">
+                <ellipse cx="200" cy="119" rx="7" ry="13"/>
+                <ellipse cx="187" cy="119" rx="7" ry="13"
+                         transform="rotate(-45 187 119)"/>
+                <ellipse cx="213" cy="119" rx="7" ry="13"
+                         transform="rotate(45 213 119)"/>
+              </g>
+
+              <circle cx="200" cy="119" r="5" fill="#FFBD32"/>
             </g>
-
-            <g fill="none" stroke="#a7c52d" stroke-width="5">
-              <ellipse cx="115" cy="165" rx="55" ry="59"
-                       stroke-dasharray="5 10"/>
-              <ellipse cx="245" cy="165" rx="55" ry="59"
-                       stroke-dasharray="5 10"/>
-            </g>
-
-            <path d="M180 220 L159 250 Q180 269 201 250Z"
-                  fill="#09112f"
-                  stroke="#fff8e9"
-                  stroke-width="2"/>
-
-            <path d="M108 287 Q180 307 252 287
-                     L245 320 Q180 338 115 320Z"
-                  fill="#fff8e9"
-                  stroke="#e62e69"
-                  stroke-width="3"/>
-
-            <g stroke="#09112f" stroke-width="2">
-              <path d="M137 294 L137 325
-                       M158 299 L158 330
-                       M180 301 L180 332
-                       M202 299 L202 330
-                       M223 294 L223 325"/>
-            </g>
-
-            <!-- Flor de la frente -->
-            <g transform="translate(180 57)">
-              <ellipse cy="-13" rx="8" ry="14" fill="#8e2be2"/>
-              <ellipse cy="13" rx="8" ry="14" fill="#8e2be2"/>
-              <ellipse cx="-13" rx="14" ry="8" fill="#8e2be2"/>
-              <ellipse cx="13" rx="14" ry="8" fill="#8e2be2"/>
-              <circle r="7" fill="#ffbd32"/>
-            </g>
-
           </svg>
         </div>
 
         <p class="hint skull-caption">
-          Selecciona un segmento o un título de la leyenda para consultar la obra.
+          Selecciona un segmento o un título de la leyenda para consultar la calaverita.
         </p>
       </div>
     </div>
 
     <div class="winner" id="winner">
-      Aún no hay resultados oficiales.
+      Los resultados aparecerán aquí.
     </div>
   </section>
 
+  <!-- BASES DEL CONCURSO -->
   <section class="card">
     <h2>¿Cómo participar?</h2>
 
-    <p>1. Registra tu calaverita literaria con tu correo institucional.</p>
-    <p>2. El equipo organizador revisará tu inscripción.</p>
-    <p>3. Si es aprobada, aparecerá en la galería del concurso.</p>
-    <p>4. Para votar, utiliza el QR de la encuesta oficial cuando esté habilitada.</p>
+    <div class="rules">
+      <h3>Tema: Salud Digital</h3>
 
-    <p class="notice">
-      Esta versión es una demostración visual. Las inscripciones todavía no se guardan en un servidor y los votos no son oficiales.
-    </p>
+      <p>
+        Puedes inspirarte en la tecnología aplicada a la medicina,
+        la inteligencia artificial, la educación médica, la investigación
+        científica o la innovación en salud. También puedes incluir
+        tlacuaches como protagonistas.
+      </p>
+
+      <p>
+        <strong>Originalidad:</strong>
+        No se permite el uso de inteligencia artificial para elaborar
+        la calaverita.
+      </p>
+
+      <p>
+        <strong>Formato y diseño:</strong>
+        Libres.
+      </p>
+
+      <p>
+        <strong>Identificación:</strong>
+        Coloca tu nombre completo y grupo en tu trabajo.
+      </p>
+
+      <p>
+        <strong>Lugar de entrega:</strong>
+        Aula 5 del Departamento de Salud Digital.
+      </p>
+
+      <p>
+        <strong>Recepción:</strong>
+        Del 19 al 29 de octubre.
+      </p>
+
+      <p>
+        Las calaveritas se exhibirán en el departamento y podrás votar
+        por tu favorita en tiempo real mediante el código QR de cada
+        calaverita.
+      </p>
+
+      <p>
+        <strong>Premios:</strong>
+        Las tres calaveritas más votadas recibirán premios.
+      </p>
+
+      <p>
+        <strong>Anuncio de ganadores:</strong>
+        30 de octubre.
+      </p>
+
+      <p class="closing">
+        Que la Catrina se lleve tus versos, pero no tu creatividad.
+      </p>
+    </div>
   </section>
 
 </main>
 
 <footer>
-  Tlacuaverita Literaria · Departamento de Salud Digital · UNAM
+  Tlacuaverita Literaria<br>
+  Departamento de Salud Digital · Facultad de Medicina · UNAM
 </footer>
 
-<!-- FORMULARIO DE INSCRIPCIÓN -->
-
+<!-- FORMULARIO -->
 <div class="modal" id="formModal"
      role="dialog" aria-modal="true"
      aria-labelledby="formTitle">
@@ -604,6 +668,10 @@ input:focus-visible {
       <input id="author" required maxlength="120"
              placeholder="Nombre y apellidos">
 
+      <label for="group">Tu grupo</label>
+      <input id="group" required maxlength="50"
+             placeholder="Escribe tu grupo">
+
       <label for="title">Título de la calaverita</label>
       <input id="title" required maxlength="160"
              placeholder="Título de tu obra">
@@ -619,7 +687,9 @@ input:focus-visible {
       <img id="preview" class="preview"
            alt="Vista previa de la calaverita">
 
-      <button class="primary" type="submit">Enviar inscripción</button>
+      <button class="primary" type="submit">
+        Enviar inscripción
+      </button>
     </form>
 
     <p id="formMessage" class="notice" hidden></p>
@@ -627,7 +697,6 @@ input:focus-visible {
 </div>
 
 <!-- ENCUESTA EXTERNA -->
-
 <div class="modal" id="qrModal"
      role="dialog" aria-modal="true"
      aria-labelledby="qrTitle">
@@ -638,11 +707,12 @@ input:focus-visible {
     <h2 id="qrTitle">Votación oficial</h2>
 
     <p>
-      La encuesta oficial se habilitará aquí cuando el equipo organizador la configure.
+      La encuesta oficial se habilitará cuando el equipo organizador
+      configure su enlace.
     </p>
 
     <p class="notice">
-      Todavía no se reciben votos desde esta demostración.
+      Esta demostración todavía no recibe votos.
     </p>
 
     <label for="surveyLink">Enlace de la encuesta</label>
@@ -655,8 +725,7 @@ input:focus-visible {
   </div>
 </div>
 
-<!-- DETALLE DE LA CALAVERITA -->
-
+<!-- DETALLE DE CADA CALAVERITA -->
 <div class="modal" id="artModal"
      role="dialog" aria-modal="true"
      aria-labelledby="artTitle">
@@ -674,7 +743,7 @@ input:focus-visible {
 <script>
 /*
  * DATOS FICTICIOS PARA PROBAR EL DISEÑO.
- * No son inscripciones ni votos reales.
+ * No son votos ni inscripciones reales.
  */
 
 const demoWorks = [
@@ -683,7 +752,7 @@ const demoWorks = [
     title: "La Catrina Digital",
     author: "Participante de ejemplo",
     votes: 12,
-    color: "#f5a623",
+    color: "#E62E69",
     image: ""
   },
   {
@@ -691,7 +760,7 @@ const demoWorks = [
     title: "El Tlacuache y la Catrina",
     author: "Participante de ejemplo",
     votes: 8,
-    color: "#e62e69",
+    color: "#F5A623",
     image: ""
   },
   {
@@ -699,7 +768,7 @@ const demoWorks = [
     title: "La Muerte en el Hospital",
     author: "Participante de ejemplo",
     votes: 6,
-    color: "#8e2be2",
+    color: "#FFD447",
     image: ""
   },
   {
@@ -707,7 +776,39 @@ const demoWorks = [
     title: "Calaverita Tecnológica",
     author: "Participante de ejemplo",
     votes: 4,
-    color: "#269fc5",
+    color: "#76B82A",
+    image: ""
+  },
+  {
+    id: 5,
+    title: "La Catrina Científica",
+    author: "Participante de ejemplo",
+    votes: 3,
+    color: "#269FC5",
+    image: ""
+  },
+  {
+    id: 6,
+    title: "El Último Algoritmo",
+    author: "Participante de ejemplo",
+    votes: 2,
+    color: "#159BA7",
+    image: ""
+  },
+  {
+    id: 7,
+    title: "Versos del Futuro",
+    author: "Participante de ejemplo",
+    votes: 2,
+    color: "#8E2BE2",
+    image: ""
+  },
+  {
+    id: 8,
+    title: "La Muerte Innovadora",
+    author: "Participante de ejemplo",
+    votes: 1,
+    color: "#A33D72",
     image: ""
   }
 ];
@@ -743,8 +844,13 @@ document.addEventListener("keydown", event => {
   }
 });
 
-$("showForm").addEventListener("click", () => openModal("formModal"));
-$("showQR").addEventListener("click", () => openModal("qrModal"));
+$("showForm").addEventListener("click", () => {
+  openModal("formModal");
+});
+
+$("showQR").addEventListener("click", () => {
+  openModal("qrModal");
+});
 
 function showWork(work) {
   $("artTitle").textContent = work.title;
@@ -776,24 +882,25 @@ function render() {
   segments.replaceChildren();
 
   const palette = [
-    "#f5a623",
-    "#e62e69",
-    "#8e2be2",
-    "#269fc5",
-    "#76b82a",
-    "#e88a32",
-    "#a33d72",
-    "#2678ae"
+    "#E62E69",
+    "#F5A623",
+    "#FFD447",
+    "#76B82A",
+    "#269FC5",
+    "#159BA7",
+    "#8E2BE2",
+    "#A33D72"
   ];
 
   sorted.forEach((work, index) => {
+    const color = work.color || palette[index % palette.length];
+
     const button = document.createElement("button");
     button.className = "legend-item";
 
     const swatch = document.createElement("span");
     swatch.className = "swatch";
-    swatch.style.backgroundColor =
-      work.color || palette[index % palette.length];
+    swatch.style.backgroundColor = color;
 
     const name = document.createElement("span");
     name.className = "legend-name";
@@ -805,17 +912,12 @@ function render() {
 
     button.append(swatch, name, count);
     button.addEventListener("click", () => showWork(work));
-
     $("legend").append(button);
   });
 
-  /*
-   * Cada sector parte del centro de la calavera.
-   * El clipPath recorta los sectores a su silueta.
-   */
-  const cx = 180;
-  const cy = 210;
-  const radius = 230;
+  const cx = 200;
+  const cy = 200;
+  const radius = 174;
 
   function pointAt(angle) {
     const radians = angle * Math.PI / 180;
@@ -840,16 +942,22 @@ function render() {
   }
 
   let currentAngle = -90;
+
   const chartWorks = sorted.filter(work => work.votes > 0);
+  const useEqualSegments = total === 0 && sorted.length > 0;
 
   chartWorks.forEach((work, index) => {
     const sweep = total > 0
       ? (work.votes / total) * 360
-      : 0;
+      : useEqualSegments
+        ? 360 / sorted.length
+        : 0;
+
+    if (sweep <= 0) return;
 
     const endAngle = currentAngle + sweep;
-
     const path = document.createElementNS(svgNS, "path");
+
     path.setAttribute("d", sectorPath(currentAngle, endAngle));
     path.setAttribute(
       "fill",
@@ -858,7 +966,7 @@ function render() {
     path.setAttribute("tabindex", "0");
     path.setAttribute("role", "button");
 
-    const percentage = total
+    const percentage = total > 0
       ? ((work.votes / total) * 100).toFixed(1)
       : "0.0";
 
@@ -891,12 +999,12 @@ function render() {
 
   $("winner").textContent = total > 0 && sorted.length
     ? `Primer lugar de demostración: ${sorted[0].title}, con ${sorted[0].votes} votos ficticios.`
-    : "Aún no hay votos registrados.";
+    : "Todavía no hay resultados de votación.";
 }
 
 render();
 
-/* Vista previa local de la imagen seleccionada */
+/* Vista previa de la imagen seleccionada */
 
 $("art").addEventListener("change", () => {
   const file = $("art").files[0];
@@ -930,14 +1038,15 @@ $("art").addEventListener("change", () => {
 });
 
 /*
- * DEMOSTRACIÓN: no envía información al servidor.
- * Se requiere backend para inscripciones reales.
+ * DEMOSTRACIÓN: el formulario no envía información al servidor.
+ * La inscripción real requiere autenticación y almacenamiento.
  */
 
 $("entryForm").addEventListener("submit", event => {
   event.preventDefault();
 
   const email = $("email").value.trim().toLowerCase();
+
   const validDomain =
     email.endsWith("@facmed.unam.mx") ||
     email.endsWith("@unam.mx");
@@ -957,7 +1066,7 @@ $("entryForm").addEventListener("submit", event => {
   }
 
   $("formMessage").textContent =
-    "La demostración está lista visualmente, pero todavía falta conectar el servidor para registrar tu inscripción de forma segura.";
+    "Esta demostración todavía no registra inscripciones reales. Es necesario conectar el servidor para guardar y revisar tu trabajo.";
 });
 
 /* Apertura de la encuesta externa */
