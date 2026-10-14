@@ -119,8 +119,6 @@ main{width:min(1180px,94%);margin:28px auto 44px}.section-card{margin-bottom:26p
   </div>
   <div class="footer-legal">Hecho en México, Universidad Nacional Autónoma de México (UNAM), Facultad de Medicina. Todos los derechos reservados 2026.</div>
 </footer>
-
-<!-- VENTANA DE REGISTRO -->
 <div class="modal" id="registrationModal" role="dialog" aria-modal="true" aria-labelledby="registrationTitle">
   <div class="modal-content">
     <button class="modal-close" type="button" data-close="registrationModal" aria-label="Cerrar">&times;</button>
@@ -147,8 +145,6 @@ main{width:min(1180px,94%);margin:28px auto 44px}.section-card{margin-bottom:26p
     </form>
   </div>
 </div>
-
-<!-- VENTANA DE DETALLE DE OBRA -->
 <div class="modal" id="workDetailModal" role="dialog" aria-modal="true" aria-labelledby="workDetailTitle">
   <div class="modal-content">
     <button class="modal-close" type="button" data-close="workDetailModal" aria-label="Cerrar">&times;</button>
@@ -158,8 +154,6 @@ main{width:min(1180px,94%);margin:28px auto 44px}.section-card{margin-bottom:26p
     <p class="work-detail-description hidden" id="workDetailDescription"></p>
   </div>
 </div>
-
-<!-- VENTANA DE VOTACIÓN -->
 <div class="modal" id="votingModal" role="dialog" aria-modal="true" aria-labelledby="votingTitle">
   <div class="modal-content">
     <button class="modal-close" type="button" data-close="votingModal" aria-label="Cerrar">&times;</button>
@@ -211,7 +205,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (event.key === "Escape") document.querySelectorAll(".modal.open").forEach(closeModal);
   });
 
-  // Vista previa de imagen
   const workImageInput = document.getElementById("workImage");
   const previewContainer = document.getElementById("previewContainer");
   const imagePreview = document.getElementById("imagePreview");
@@ -252,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.getElementById("removeImage").addEventListener("click", clearImagePreview);
 
-  // Validación local del formulario; no guarda datos en un servidor.
+
   const registrationForm = document.getElementById("registrationForm");
   const registrationMessage = document.getElementById("registrationMessage");
 
@@ -273,7 +266,7 @@ document.addEventListener("DOMContentLoaded", function () {
     registrationMessage.classList.remove("hidden");
   });
 
-  // Enlace de votación
+
   const surveyLink = document.getElementById("surveyLink");
   const votingMessage = document.getElementById("votingMessage");
 
@@ -303,7 +296,7 @@ document.addEventListener("DOMContentLoaded", function () {
     votingMessage.classList.remove("hidden");
   });
 
-  // Gráfica circular: solo se crean segmentos para obras aprobadas.
+ 
   const pieSlices = document.getElementById("pieSlices");
   const emptyChartCircle = document.getElementById("emptyChartCircle");
   const chartNote = document.getElementById("chartNote");
