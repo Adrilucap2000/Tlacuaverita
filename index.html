@@ -4,321 +4,932 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tlacuaverita Literaria | Salud Digital</title>
+
+<title>Tlacuaverita Literaria | Salud Digital UNAM</title>
+
 <style>
 :root {
-  --morado:#280B3A;
-  --panel:#50008F;
-  --violeta:#7418C9;
-  --naranja:#FF7900;
-  --crema:#FFF0D8;
-  --cafe:#6B3825;
+  --morado: #280B3A;
+  --panel: #50008F;
+  --violeta: #7418C9;
+  --naranja: #FF7900;
+  --crema: #FFF0D8;
+  --cafe: #6B3825;
 }
-*{box-sizing:border-box}
-body{
-  margin:0;background:var(--morado);color:white;
-  font-family:Arial,Helvetica,sans-serif;
+
+* {
+  box-sizing: border-box;
 }
-header{
-  text-align:center;padding:22px 14px 18px;
-  background:linear-gradient(180deg,#17051f,#35104a);
-  border-bottom:3px solid var(--naranja);
+
+body {
+  margin: 0;
+  background: var(--morado);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
 }
-.papel{font-size:26px;letter-spacing:5px;color:#ffb04b}
-h1{margin:12px 0 6px;font-size:clamp(27px,5vw,42px)}
-.subtitle{color:#f8d6ff;line-height:1.5}
-nav{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}
-button,.btn{
-  border:0;border-radius:12px;padding:12px 18px;
-  font-weight:bold;cursor:pointer;font-size:15px;
+
+header {
+  text-align: center;
+  padding: 22px 14px 24px;
+  background: linear-gradient(180deg, #17051f, #35104a);
+  border-bottom: 3px solid var(--naranja);
 }
-.primary{background:var(--violeta);color:white;border:2px solid #d9a4ff}
-.primary:hover{background:#8c2be0}
-.secondary{background:var(--naranja);color:#2b102e}
-main{max-width:1100px;margin:auto;padding:24px 16px 50px}
-.card{
-  background:#3a1450;border:1px solid #75428a;
-  border-radius:20px;padding:22px;margin-bottom:22px;
-  box-shadow:0 8px 28px #12051955;
+
+.papel {
+  font-size: 24px;
+  letter-spacing: 5px;
+  color: #ffb04b;
 }
-h2{margin-top:0;color:#ffd4a2}
-.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.stat{background:#501e69;border-radius:14px;text-align:center;padding:18px 8px}
-.stat strong{display:block;font-size:30px;color:#ffb15b}
-.stat span{font-size:13px;color:#f2d9ff}
-.chart-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:24px;align-items:center}
-.legend{display:grid;gap:9px}
-.legend-item{
-  width:100%;display:flex;align-items:center;gap:10px;
-  background:#4a205e;color:white;text-align:left;border-radius:10px;
-  padding:12px;border:1px solid transparent;
+
+h1 {
+  margin: 15px 0 8px;
+  font-size: clamp(27px, 5vw, 42px);
 }
-.legend-item:hover{border-color:#ffc17b;background:#5a2870}
-.swatch{width:15px;height:15px;border-radius:50%;flex-shrink:0}
-.legend-name{flex:1;overflow-wrap:anywhere}
-.legend-count{font-size:13px;color:#ffd5a4;white-space:nowrap}
-.bread-wrap{display:flex;justify-content:center;align-items:center;padding:10px}
-.bread{
-  width:min(100%,340px);aspect-ratio:1;border-radius:50%;
-  position:relative;border:10px solid #e8bd83;
-  box-shadow:inset 0 0 0 5px #f4d3a0,0 12px 28px #17091e;
-  background:conic-gradient(#65341f 0 40%,#a76b3d 40% 65%,#c18a53 65% 85%,#80502e 85% 100%);
-  cursor:pointer;transition:transform .25s;
+
+.subtitle {
+  color: #f8d6ff;
+  line-height: 1.6;
 }
-.bread:hover{transform:scale(1.025)}
-.bread:before{
-  content:"✿";position:absolute;inset:27%;
-  border-radius:50%;display:grid;place-items:center;
-  font-size:clamp(45px,9vw,76px);color:#ffe1b2;
-  background:radial-gradient(circle,#b9824d,#e2b477 65%,#b77b45);
-  box-shadow:inset 0 0 0 5px #f4d6a4;
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
-.bread:after{
-  content:"PAN DE MUERTO";position:absolute;bottom:12%;
-  left:0;right:0;text-align:center;font-size:10px;
-  letter-spacing:2px;color:#fff0d8;font-weight:bold;
+
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.2s ease;
 }
-.hint{font-size:13px;color:#e5c9ef;line-height:1.6}
-.winner{border-left:4px solid var(--naranja);padding:12px 15px;background:#4a205e;border-radius:8px}
-input,textarea{
-  width:100%;padding:12px;margin-top:6px;margin-bottom:16px;
-  border:1px solid #bb8ad5;border-radius:9px;background:#7418C9;
-  color:white;font:inherit;
+
+.primary {
+  background: var(--violeta);
+  color: white;
+  border: 2px solid #d9a4ff;
 }
-input::placeholder,textarea::placeholder{color:#ead5f7}
-label{font-weight:bold}
-input[type=file]{background:#4a205e}
-.preview{max-width:100%;max-height:240px;display:none;border-radius:12px;margin-bottom:16px}
-.notice{padding:13px;border-radius:10px;background:#4b205b;color:#ffe6c5;line-height:1.5}
-footer{text-align:center;padding:25px;color:#d9bce6;font-size:13px}
-.modal{
-  position:fixed;inset:0;background:#100515df;z-index:5;
-  display:none;align-items:center;justify-content:center;padding:16px;
+
+.primary:hover {
+  background: #8c2be0;
+  transform: translateY(-2px);
 }
-.modal.open{display:flex}
-.modal-content{width:min(100%,540px);max-height:90vh;overflow:auto;background:#351044;border:1px solid #a56ac2;border-radius:20px;padding:22px}
-.modal-content img{max-width:100%;max-height:45vh;display:block;margin:12px auto;border-radius:12px}
-.close{float:right;background:#63317b;color:white}
-a{color:#ffd19c}
-[hidden]{display:none!important}
-@media(max-width:700px){
- .chart-layout{grid-template-columns:1fr}
- .bread{width:min(80vw,310px)}
- .card{padding:17px}
- .papel{font-size:20px;letter-spacing:1px}
+
+.secondary {
+  background: var(--naranja);
+  color: #2b102e;
+}
+
+.secondary:hover {
+  background: #ffad4d;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 24px 16px 50px;
+}
+
+.card {
+  background: #3a1450;
+  border: 1px solid #75428a;
+  border-radius: 20px;
+  padding: 22px;
+  margin-bottom: 22px;
+  box-shadow: 0 8px 28px #12051955;
+}
+
+h2 {
+  margin-top: 0;
+  color: #ffd4a2;
+  font-size: 24px;
+}
+
+h3 {
+  color: #ffcf9a;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stat {
+  background: #501e69;
+  border-radius: 14px;
+  text-align: center;
+  padding: 18px 8px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 30px;
+  color: #ffb15b;
+}
+
+.stat span {
+  font-size: 13px;
+  color: #f2d9ff;
+}
+
+.chart-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.legend {
+  display: grid;
+  gap: 9px;
+}
+
+.legend-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #4a205e;
+  color: white;
+  text-align: left;
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid transparent;
+}
+
+.legend-item:hover,
+.legend-item:focus-visible {
+  border-color: #ffc17b;
+  background: #5a2870;
+}
+
+.swatch {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-name {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.legend-count {
+  font-size: 13px;
+  color: #ffd5a4;
+  white-space: nowrap;
+}
+
+.sugar-skull-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 12px;
+  border-radius: 24px;
+  background: #fff8e9;
+  box-shadow: 0 10px 30px #16071f66;
+}
+
+.sugar-skull-wrap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.skull-caption {
+  text-align: center;
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+.hint {
+  font-size: 13px;
+  color: #e5c9ef;
+  line-height: 1.6;
+}
+
+.winner {
+  border-left: 4px solid var(--naranja);
+  padding: 14px 15px;
+  background: #4a205e;
+  border-radius: 8px;
+  margin-top: 18px;
+  line-height: 1.6;
+}
+
+.notice {
+  padding: 13px;
+  border-radius: 10px;
+  background: #4b205b;
+  color: #ffe6c5;
+  line-height: 1.6;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  border: 1px solid #bb8ad5;
+  border-radius: 9px;
+  background: #7418C9;
+  color: white;
+  font: inherit;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #ead5f7;
+}
+
+input[type="file"] {
+  background: #4a205e;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+}
+
+.preview {
+  max-width: 100%;
+  max-height: 240px;
+  display: none;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #d9bce6;
+  font-size: 13px;
+  border-top: 1px solid #75428a;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: #100515df;
+  z-index: 5;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal.open {
+  display: flex;
+}
+
+.modal-content {
+  width: min(100%, 540px);
+  max-height: 90vh;
+  overflow: auto;
+  background: #351044;
+  border: 1px solid #a56ac2;
+  border-radius: 20px;
+  padding: 22px;
+}
+
+.modal-content img {
+  max-width: 100%;
+  max-height: 45vh;
+  display: block;
+  margin: 12px auto;
+  border-radius: 12px;
+}
+
+.close {
+  float: right;
+  background: #63317b;
+  color: white;
+}
+
+.close:hover {
+  background: #81439d;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #ffbd72;
+  outline-offset: 3px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 700px) {
+  .chart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sugar-skull-wrap {
+    max-width: 310px;
+  }
+
+  .card {
+    padding: 17px;
+  }
+
+  .papel {
+    font-size: 19px;
+    letter-spacing: 2px;
+  }
+
+  .legend-count {
+    font-size: 12px;
+  }
 }
 </style>
 </head>
+
 <body>
+
 <header>
-  <div class="papel">✿ ▰ ❀ ▰ ✿ ▰ ❀ ▰ ✿</div>
-  <div style="font-size:45px;margin-top:8px" aria-hidden="true">💀 🦡 🌼</div>
+  <div class="papel" aria-hidden="true">
+    ✿ ▰ ❀ ▰ ✿ ▰ ❀ ▰ ✿
+  </div>
+
   <h1>Tlacuaverita Literaria</h1>
-  <div class="subtitle">La creatividad también vive después de la muerte.<br>
-  Concurso del Departamento de Salud Digital · Facultad de Medicina UNAM</div>
+
+  <div class="subtitle">
+    La creatividad también vive después de la muerte.<br>
+    Concurso del Departamento de Salud Digital<br>
+    Facultad de Medicina, UNAM
+  </div>
+
   <nav>
-    <button class="primary" id="showForm">✂ Inscríbete ✂</button>
-    <button class="secondary" id="showQR">🗳️ Votar por QR</button>
+    <button class="primary" id="showForm">
+      Inscríbete
+    </button>
+
+    <button class="secondary" id="showQR">
+      Votar por QR
+    </button>
   </nav>
 </header>
 
 <main>
+
   <section class="card">
-    <h2>🌼 Así va nuestra Tlacuaverita</h2>
-    <p class="hint">Consulta las calaveritas participantes y los resultados disponibles.</p>
+    <h2>Así va nuestra Tlacuaverita</h2>
+
+    <p class="hint">
+      Consulta las calaveritas aprobadas y los resultados disponibles.
+    </p>
+
     <div class="stats">
-      <div class="stat"><strong id="totalWorks">0</strong><span>Calaveritas aprobadas</span></div>
-      <div class="stat"><strong id="totalVotes">0</strong><span>Votos reportados</span></div>
+      <div class="stat">
+        <strong id="totalWorks">0</strong>
+        <span>Calaveritas aprobadas</span>
+      </div>
+
+      <div class="stat">
+        <strong id="totalVotes">0</strong>
+        <span>Votos reportados</span>
+      </div>
     </div>
-    <p class="hint" id="updateTime">Demo visual: los votos que aparecen a continuación son ficticios.</p>
+
+    <p class="hint" id="updateTime">
+      Demostración visual. Los resultados mostrados son ficticios.
+    </p>
   </section>
 
   <section class="card">
-    <h2>🥖 El pan de las votaciones</h2>
+    <h2>Calaveritas y votaciones</h2>
+
     <div class="chart-layout">
+
       <div>
-        <h3>Calaveritas</h3>
+        <h3>Participantes</h3>
         <div id="legend" class="legend"></div>
       </div>
+
       <div>
-        <div class="bread-wrap">
-          <div class="bread" id="bread" role="img" aria-label="Gráfica ilustrativa de votaciones" title="Selecciona una calaverita en la leyenda"></div>
+        <div class="sugar-skull-wrap">
+
+          <svg id="sugarSkull"
+               viewBox="0 0 360 420"
+               role="img"
+               aria-label="Ilustración de una calaverita de azúcar mexicana"
+               xmlns="http://www.w3.org/2000/svg">
+
+            <defs>
+              <linearGradient id="skullBase"
+                              x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fff9e9"/>
+                <stop offset="100%" stop-color="#f1dfc5"/>
+              </linearGradient>
+            </defs>
+
+            <path d="M180 24
+              C90 24 35 83 35 166
+              C35 222 58 259 86 284
+              L91 337 Q91 359 113 359
+              L247 359 Q269 359 269 337
+              L274 284 C302 259 325 222 325 166
+              C325 83 270 24 180 24Z"
+              fill="url(#skullBase)"
+              stroke="#201323"
+              stroke-width="7"/>
+
+            <g fill="none"
+               stroke="#24142b"
+               stroke-width="3"
+               stroke-linecap="round">
+              <path d="M44 117 Q75 75 102 106 T143 86"/>
+              <path d="M316 117 Q285 75 258 106 T217 86"/>
+              <path d="M48 207 Q75 238 101 211"/>
+              <path d="M312 207 Q285 238 259 211"/>
+              <path d="M115 314 Q145 288 180 319 Q215 288 245 314"/>
+            </g>
+
+            <g stroke="#3c183a" stroke-width="2">
+              <g transform="translate(94 87)">
+                <ellipse cy="-12" rx="8" ry="13" fill="#f39b26"/>
+                <ellipse cy="12" rx="8" ry="13" fill="#f39b26"/>
+                <ellipse cx="-12" rx="13" ry="8" fill="#ffbd45"/>
+                <ellipse cx="12" rx="13" ry="8" fill="#ffbd45"/>
+                <circle r="7" fill="#6e2c73"/>
+              </g>
+
+              <g transform="translate(266 87)">
+                <ellipse cy="-12" rx="8" ry="13" fill="#f39b26"/>
+                <ellipse cy="12" rx="8" ry="13" fill="#f39b26"/>
+                <ellipse cx="-12" rx="13" ry="8" fill="#ffbd45"/>
+                <ellipse cx="12" rx="13" ry="8" fill="#ffbd45"/>
+                <circle r="7" fill="#6e2c73"/>
+              </g>
+            </g>
+
+            <g>
+              <circle cx="111" cy="169" r="47"
+                      fill="#16131c" stroke="#e6a72d" stroke-width="7"/>
+              <circle cx="249" cy="169" r="47"
+                      fill="#16131c" stroke="#e6a72d" stroke-width="7"/>
+
+              <circle cx="111" cy="169" r="35" fill="#13b9d2"/>
+              <circle cx="249" cy="169" r="35" fill="#13b9d2"/>
+
+              <g fill="#ffcf45">
+                <ellipse cx="111" cy="145" rx="7" ry="15"/>
+                <ellipse cx="111" cy="193" rx="7" ry="15"/>
+                <ellipse cx="87" cy="169" rx="15" ry="7"/>
+                <ellipse cx="135" cy="169" rx="15" ry="7"/>
+
+                <ellipse cx="249" cy="145" rx="7" ry="15"/>
+                <ellipse cx="249" cy="193" rx="7" ry="15"/>
+                <ellipse cx="225" cy="169" rx="15" ry="7"/>
+                <ellipse cx="273" cy="169" rx="15" ry="7"/>
+              </g>
+
+              <circle cx="111" cy="169" r="8" fill="#fff7dd"/>
+              <circle cx="249" cy="169" r="8" fill="#fff7dd"/>
+            </g>
+
+            <path d="M180 211 L162 244 Q180 259 198 244Z"
+                  fill="#201323" stroke="#e5aa32" stroke-width="3"/>
+
+            <g fill="none" stroke-linecap="round" stroke-width="5">
+              <path d="M65 230 Q87 209 99 237 T77 257 Q61 249 75 240"
+                    stroke="#d93d89"/>
+              <path d="M295 230 Q273 209 261 237 T283 257 Q299 249 285 240"
+                    stroke="#d93d89"/>
+              <path d="M117 235 Q133 214 145 239 T128 259"
+                    stroke="#6b3c99"/>
+              <path d="M243 235 Q227 214 215 239 T232 259"
+                    stroke="#6b3c99"/>
+              <path d="M143 281 Q161 268 180 282 Q199 268 217 281"
+                    stroke="#159db7"/>
+            </g>
+
+            <path d="M105 281 Q180 299 255 281 L250 320
+                     Q180 338 110 320Z"
+                  fill="#fffdf2" stroke="#201323" stroke-width="4"/>
+
+            <g stroke="#201323" stroke-width="3">
+              <path d="M130 285 L130 326 M155 290 L155 330
+                       M180 292 L180 332 M205 290 L205 330
+                       M230 285 L230 326"/>
+            </g>
+
+            <g transform="translate(180 369)" stroke="#44203d" stroke-width="2">
+              <ellipse cy="-13" rx="8" ry="13" fill="#f04493"/>
+              <ellipse cy="13" rx="8" ry="13" fill="#f04493"/>
+              <ellipse cx="-13" rx="13" ry="8" fill="#f04493"/>
+              <ellipse cx="13" rx="13" ry="8" fill="#f04493"/>
+              <circle r="7" fill="#ffbd45"/>
+            </g>
+
+            <g fill="#7a3994" stroke="#241323" stroke-width="1.5">
+              <circle cx="66" cy="139" r="5"/>
+              <circle cx="294" cy="139" r="5"/>
+              <circle cx="75" cy="183" r="4"/>
+              <circle cx="285" cy="183" r="4"/>
+              <circle cx="137" cy="68" r="4"/>
+              <circle cx="223" cy="68" r="4"/>
+            </g>
+
+          </svg>
         </div>
-        <p class="hint" style="text-align:center">Selecciona un título para ver su imagen y resultados.</p>
+
+        <p class="hint skull-caption">
+          Selecciona una calaverita en la leyenda para consultar su imagen y sus resultados.
+        </p>
       </div>
     </div>
-    <div class="winner" id="winner">Aún no hay resultados oficiales.</div>
+
+    <div class="winner" id="winner">
+      Aún no hay resultados oficiales.
+    </div>
   </section>
 
   <section class="card">
-    <h2>📜 ¿Cómo participar?</h2>
-    <p>1. Registra tu calaverita literaria con tu correo institucional.</p>
-    <p>2. El equipo organizador revisará tu inscripción.</p>
-    <p>3. Si es aprobada, aparecerá en la galería del concurso.</p>
-    <p>4. Para votar, utiliza el QR de la encuesta oficial cuando se encuentre habilitada.</p>
-    <p class="notice">Esta versión es una demostración visual. El registro aún no se envía a un servidor y los votos no son oficiales.</p>
+    <h2>¿Cómo participar?</h2>
+
+    <p>
+      1. Registra tu calaverita literaria con tu correo institucional.
+    </p>
+
+    <p>
+      2. El equipo organizador revisará tu inscripción.
+    </p>
+
+    <p>
+      3. Si es aprobada, aparecerá en la galería del concurso.
+    </p>
+
+    <p>
+      4. Para votar, utiliza el QR de la encuesta oficial cuando esté habilitada.
+    </p>
+
+    <p class="notice">
+      Esta versión es una demostración visual. El registro todavía no se envía a un servidor y los votos no son oficiales.
+    </p>
   </section>
+
 </main>
 
 <footer>
-  💜 Tlacuaverita Literaria · Departamento de Salud Digital · UNAM 🧡
+  Tlacuaverita Literaria · Departamento de Salud Digital · UNAM
 </footer>
 
-<div class="modal" id="formModal" role="dialog" aria-modal="true" aria-labelledby="formTitle">
+<!-- FORMULARIO DE INSCRIPCIÓN -->
+
+<div class="modal" id="formModal"
+     role="dialog" aria-modal="true"
+     aria-labelledby="formTitle">
+
   <div class="modal-content">
-    <button class="close" data-close="formModal">Cerrar ✕</button>
-    <h2 id="formTitle">✂ Inscribe tu Tlacuaverita</h2>
-    <p class="hint">Las inscripciones de esta demostración solo se guardan en este navegador.</p>
+    <button class="close" data-close="formModal">Cerrar</button>
+
+    <h2 id="formTitle">Inscribe tu Tlacuaverita</h2>
+
+    <p class="hint">
+      Las inscripciones de esta demostración solo se procesan en este navegador.
+    </p>
+
     <form id="entryForm">
+
       <label for="author">Tu nombre completo</label>
-      <input id="author" required maxlength="120" placeholder="Nombre y apellidos">
+      <input id="author" required maxlength="120"
+             placeholder="Nombre y apellidos">
+
       <label for="title">Título de la calaverita</label>
-      <input id="title" required maxlength="160" placeholder="Título de tu obra">
+      <input id="title" required maxlength="160"
+             placeholder="Título de tu obra">
+
       <label for="email">Correo institucional</label>
-      <input id="email" type="email" required placeholder="usuario@facmed.unam.mx">
-      <label for="art">Imagen de la calaverita (JPG o PNG)</label>
-      <input id="art" type="file" accept="image/png,image/jpeg" required>
-      <img id="preview" class="preview" alt="Vista previa de la calaverita">
-      <button class="primary" type="submit">Enviar inscripción</button>
+      <input id="email" type="email" required
+             placeholder="usuario@facmed.unam.mx">
+
+      <label for="art">Imagen de la calaverita</label>
+      <input id="art" type="file"
+             accept="image/png,image/jpeg" required>
+
+      <img id="preview" class="preview"
+           alt="Vista previa de la calaverita">
+
+      <button class="primary" type="submit">
+        Enviar inscripción
+      </button>
     </form>
+
     <p id="formMessage" class="notice" hidden></p>
   </div>
 </div>
 
-<div class="modal" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+<!-- ENCUESTA EXTERNA -->
+
+<div class="modal" id="qrModal"
+     role="dialog" aria-modal="true"
+     aria-labelledby="qrTitle">
+
   <div class="modal-content">
-    <button class="close" data-close="qrModal">Cerrar ✕</button>
-    <h2 id="qrTitle">🗳️ Votación oficial</h2>
-    <p>La encuesta oficial y su código QR serán publicados aquí cuando los organice el equipo del concurso.</p>
-    <p class="notice">No se reciben votos desde esta demostración. El QR aún debe configurarse con la dirección real de la encuesta.</p>
-    <label for="surveyLink">Enlace de la encuesta (pendiente de configuración)</label>
-    <input id="surveyLink" placeholder="Pega aquí el enlace oficial al configurar el sitio">
-    <button class="primary" id="openSurvey">Abrir encuesta</button>
+    <button class="close" data-close="qrModal">Cerrar</button>
+
+    <h2 id="qrTitle">Votación oficial</h2>
+
+    <p>
+      La encuesta oficial se habilitará aquí cuando el equipo organizador la configure.
+    </p>
+
+    <p class="notice">
+      Todavía no se reciben votos desde esta demostración.
+    </p>
+
+    <label for="surveyLink">
+      Enlace de la encuesta
+    </label>
+
+    <input id="surveyLink" type="url"
+           placeholder="https://...">
+
+    <button class="primary" id="openSurvey" type="button">
+      Abrir encuesta
+    </button>
   </div>
 </div>
 
-<div class="modal" id="artModal" role="dialog" aria-modal="true" aria-labelledby="artTitle">
+<!-- DETALLE DE LA CALAVERITA -->
+
+<div class="modal" id="artModal"
+     role="dialog" aria-modal="true"
+     aria-labelledby="artTitle">
+
   <div class="modal-content">
-    <button class="close" data-close="artModal">Cerrar ✕</button>
+    <button class="close" data-close="artModal">Cerrar</button>
+
     <h2 id="artTitle"></h2>
+
     <img id="artImage" alt="Imagen de la calaverita">
+
     <p id="artAuthor"></p>
     <p id="artVotes"></p>
   </div>
 </div>
 
 <script>
-/* DATOS FICTICIOS PARA DISEÑO.
-   No representan votos ni inscripciones reales. */
+/*
+ * DATOS FICTICIOS PARA LA DEMOSTRACIÓN.
+ * No representan votos ni inscripciones reales.
+ */
+
 const demoWorks = [
- {id:1,title:"La Catrina Digital",author:"Ejemplo de participante",votes:12,color:"#65341f",image:""},
- {id:2,title:"El Tlacuache y la Catrina",author:"Ejemplo de participante",votes:8,color:"#a76b3d",image:""},
- {id:3,title:"La Muerte en el Hospital",author:"Ejemplo de participante",votes:6,color:"#c18a53",image:""},
- {id:4,title:"Calaverita Tecnológica",author:"Ejemplo de participante",votes:4,color:"#80502e",image:""}
+  {
+    id: 1,
+    title: "La Catrina Digital",
+    author: "Participante de ejemplo",
+    votes: 12,
+    color: "#65341f",
+    image: ""
+  },
+  {
+    id: 2,
+    title: "El Tlacuache y la Catrina",
+    author: "Participante de ejemplo",
+    votes: 8,
+    color: "#a76b3d",
+    image: ""
+  },
+  {
+    id: 3,
+    title: "La Muerte en el Hospital",
+    author: "Participante de ejemplo",
+    votes: 6,
+    color: "#c18a53",
+    image: ""
+  },
+  {
+    id: 4,
+    title: "Calaverita Tecnológica",
+    author: "Participante de ejemplo",
+    votes: 4,
+    color: "#80502e",
+    image: ""
+  }
 ];
+
 const $ = id => document.getElementById(id);
+
 let works = [...demoWorks];
-const modalIds = ["formModal","qrModal","artModal"];
+let selectedImage = "";
 
-function openModal(id){$(id).classList.add("open")}
-function closeModal(id){$(id).classList.remove("open")}
-document.querySelectorAll("[data-close]").forEach(btn=>{
- btn.addEventListener("click",()=>closeModal(btn.dataset.close));
+function openModal(id) {
+  $(id).classList.add("open");
+}
+
+function closeModal(id) {
+  $(id).classList.remove("open");
+}
+
+document.querySelectorAll("[data-close]").forEach(button => {
+  button.addEventListener("click", () => {
+    closeModal(button.dataset.close);
+  });
 });
-modalIds.forEach(id=>$(id).addEventListener("click",e=>{
- if(e.target===$(id)) closeModal(id);
-}));
-$("showForm").onclick=()=>openModal("formModal");
-$("showQR").onclick=()=>openModal("qrModal");
 
-function showWork(work){
- $("artTitle").textContent=work.title;
- $("artAuthor").textContent="Autor/a: "+work.author;
- $("artVotes").textContent="Votos de demostración: "+work.votes;
- $("artImage").hidden=!work.image;
- if(work.image){$("artImage").src=work.image;}
- openModal("artModal");
-}
-function render(){
- const sorted=[...works].sort((a,b)=>b.votes-a.votes);
- const total=works.reduce((sum,w)=>sum+w.votes,0);
- $("totalWorks").textContent=works.length;
- $("totalVotes").textContent=total;
- $("legend").replaceChildren();
+["formModal", "qrModal", "artModal"].forEach(id => {
+  $(id).addEventListener("click", event => {
+    if (event.target === $(id)) {
+      closeModal(id);
+    }
+  });
+});
 
- sorted.forEach(work=>{
-  const button=document.createElement("button");
-  button.className="legend-item";
-  const swatch=document.createElement("span");
-  swatch.className="swatch";swatch.style.background=work.color;
-  const name=document.createElement("span");
-  name.className="legend-name";name.textContent=work.title;
-  const count=document.createElement("span");
-  count.className="legend-count";count.textContent=work.votes+" votos";
-  button.append(swatch,name,count);
-  button.onclick=()=>showWork(work);
-  $("legend").append(button);
- });
- let start=0;
- const stops=sorted.map(work=>{
-  const end=start+(total?work.votes/total*100:100/Math.max(sorted.length,1));
-  const segment=`${work.color} ${start}% ${end}%`;
-  start=end;return segment;
- });
- $("bread").style.background=`conic-gradient(${stops.join(",")})`;
- $("bread").onclick=()=>{if(sorted.length)showWork(sorted[0]);};
- $("winner").textContent=total
-  ? "🏆 Liderazgo de demostración: "+sorted[0].title+" ("+sorted[0].votes+" votos ficticios)."
-  : "Aún no hay resultados.";
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    ["formModal", "qrModal", "artModal"].forEach(closeModal);
+  }
+});
+
+$("showForm").addEventListener("click", () => {
+  openModal("formModal");
+});
+
+$("showQR").addEventListener("click", () => {
+  openModal("qrModal");
+});
+
+function showWork(work) {
+  $("artTitle").textContent = work.title;
+  $("artAuthor").textContent = "Autor/a: " + work.author;
+
+  $("artVotes").textContent =
+    "Votos de demostración: " + work.votes;
+
+  $("artImage").hidden = !work.image;
+
+  if (work.image) {
+    $("artImage").src = work.image;
+  } else {
+    $("artImage").removeAttribute("src");
+  }
+
+  openModal("artModal");
 }
+
+function render() {
+  const sorted = [...works].sort(
+    (a, b) => b.votes - a.votes
+  );
+
+  const total = works.reduce(
+    (sum, work) => sum + work.votes, 0
+  );
+
+  $("totalWorks").textContent = works.length;
+  $("totalVotes").textContent = total;
+
+  $("legend").replaceChildren();
+
+  sorted.forEach(work => {
+    const button = document.createElement("button");
+    button.className = "legend-item";
+
+    const swatch = document.createElement("span");
+    swatch.className = "swatch";
+    swatch.style.backgroundColor = work.color;
+
+    const name = document.createElement("span");
+    name.className = "legend-name";
+    name.textContent = work.title;
+
+    const count = document.createElement("span");
+    count.className = "legend-count";
+    count.textContent = work.votes + " votos";
+
+    button.append(swatch, name, count);
+
+    button.addEventListener("click", () => {
+      showWork(work);
+    });
+
+    $("legend").append(button);
+  });
+
+  const skull = $("sugarSkull");
+
+  skull.style.cursor = sorted.length ? "pointer" : "default";
+
+  skull.onclick = () => {
+    if (sorted.length) {
+      showWork(sorted[0]);
+    }
+  };
+
+  if (total > 0 && sorted.length > 0) {
+    $("winner").textContent =
+      "Primer lugar de demostración: " +
+      sorted[0].title + " (" +
+      sorted[0].votes + " votos ficticios).";
+  } else {
+    $("winner").textContent = "Aún no hay resultados.";
+  }
+}
+
 render();
 
-let selectedImage="";
-$("art").addEventListener("change",()=>{
- const file=$("art").files[0];
- selectedImage="";
- $("preview").style.display="none";
- if(!file)return;
- if(!["image/jpeg","image/png"].includes(file.type)){
-  alert("Selecciona una imagen JPG o PNG.");$("art").value="";return;
- }
- if(file.size>3*1024*1024){
-  alert("La imagen debe pesar menos de 3 MB.");$("art").value="";return;
- }
- const reader=new FileReader();
- reader.onload=()=>{
-  selectedImage=reader.result;
-  $("preview").src=selectedImage;
-  $("preview").style.display="block";
- };
- reader.readAsDataURL(file);
+/* Vista previa de la imagen */
+
+$("art").addEventListener("change", () => {
+  const file = $("art").files[0];
+
+  selectedImage = "";
+  $("preview").style.display = "none";
+
+  if (!file) return;
+
+  if (!["image/jpeg", "image/png"].includes(file.type)) {
+    alert("Selecciona una imagen JPG o PNG.");
+    $("art").value = "";
+    return;
+  }
+
+  if (file.size > 3 * 1024 * 1024) {
+    alert("La imagen debe pesar menos de 3 MB.");
+    $("art").value = "";
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = () => {
+    selectedImage = reader.result;
+    $("preview").src = selectedImage;
+    $("preview").style.display = "block";
+  };
+
+  reader.readAsDataURL(file);
 });
 
-$("entryForm").addEventListener("submit",e=>{
- e.preventDefault();
- const email=$("email").value.trim().toLowerCase();
- if(!email.endsWith("@facmed.unam.mx")&&!email.endsWith("@unam.mx")){
-  $("formMessage").hidden=false;
-  $("formMessage").textContent="Utiliza un correo @facmed.unam.mx o @unam.mx.";
-  return;
- }
- if(!selectedImage){
-  $("formMessage").hidden=false;
-  $("formMessage").textContent="Selecciona una imagen válida.";
-  return;
- }
- /* No se envían datos ni se publica la obra en esta demo. */
- $("formMessage").hidden=false;
- $("formMessage").textContent="Demostración: el formulario funciona visualmente, pero todavía falta conectar el servidor para registrar tu inscripción de forma segura.";
+/*
+ * El formulario todavía no registra participantes reales.
+ * Hace falta conectar autenticación, backend y almacenamiento.
+ */
+
+$("entryForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const email = $("email").value.trim().toLowerCase();
+
+  const validDomain =
+    email.endsWith("@facmed.unam.mx") ||
+    email.endsWith("@unam.mx");
+
+  $("formMessage").hidden = false;
+
+  if (!validDomain) {
+    $("formMessage").textContent =
+      "Utiliza un correo @facmed.unam.mx o @unam.mx.";
+    return;
+  }
+
+  if (!selectedImage) {
+    $("formMessage").textContent =
+      "Selecciona una imagen válida.";
+    return;
+  }
+
+  $("formMessage").textContent =
+    "La demostración está lista visualmente, pero falta conectar el servidor para registrar tu inscripción de forma segura.";
 });
 
-$("openSurvey").onclick=()=>{
- const link=$("surveyLink").value.trim();
- if(!/^https:\/\/.+/i.test(link)){
-  alert("Introduce el enlace HTTPS de la encuesta oficial.");return;
- }
- window.open(link,"_blank","noopener,noreferrer");
-};
+/* Acceso a la encuesta externa */
+
+$("openSurvey").addEventListener("click", () => {
+  const link = $("surveyLink").value.trim();
+
+  let url;
+
+  try {
+    url = new URL(link);
+  } catch {
+    alert("Introduce el enlace de la encuesta oficial.");
+    return;
+  }
+
+  if (url.protocol !== "https:") {
+    alert("La encuesta debe utilizar un enlace HTTPS.");
+    return;
+  }
+
+  window.open(url.href, "_blank", "noopener,noreferrer");
+});
 </script>
+
 </body>
 </html>
